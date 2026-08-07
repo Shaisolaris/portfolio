@@ -1,0 +1,14 @@
+GNU General Public License v3.0
+
+This project is based on open-react-template by Cruip
+(https://github.com/cruip/open-react-template), which is released under the
+GPL license as stated in its README ("Released under the GPL",
+linking to https://www.gnu.org/licenses/gpl-3.0.html).
+
+The upstream repository does not ship a LICENSE file; this file records that
+licensing declaration. The full text of the GNU General Public License v3.0
+is available at: https://www.gnu.org/licenses/gpl-3.0.txt
+
+In accordance with the GPL, this derivative work (Solaris portfolio build
+"Open Dev Landing") is likewise distributed under the GNU General Public
+License v3.0, with source available.

@@ -1,0 +1,93 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+4:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+c:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+d:"$Sreact.suspense"
+5:T475,import { cn } from "@/lib/utils";
+
+interface BrowserMockupProps extends React.HTMLAttributes<HTMLDivElement> {
+  url?: string;
+  children: React.ReactNode;
+}
+
+/**
+ * Browser window frame — traffic lights, URL bar, your content inside.
+ */
+export function BrowserMockup({
+  url = "velora.dev",
+  className,
+  children,
+  ...props
+}: BrowserMockupProps) {
+  return (
+    <div
+      data-slot="browser-mockup"
+      className={cn(
+        "overflow-hidden rounded-2xl border bg-card/80 shadow-2xl backdrop-blur",
+        className
+      )}
+      {...props}
+    >
+      <div className="flex items-center gap-3 border-b border-border/60 px-4 py-3">
+        <div className="flex gap-1.5">
+          <span className="size-3 rounded-full bg-red-500/70" />
+          <span className="size-3 rounded-full bg-yellow-500/70" />
+          <span className="size-3 rounded-full bg-green-500/70" />
+        </div>
+        <div className="mx-auto flex h-7 w-64 items-center justify-center rounded-md bg-muted/60 text-xs text-muted-foreground">
+          {url}
+        </div>
+        <div className="w-14" />
+      </div>
+      {children}
+    </div>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Browser Mockup"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"Browser window frame for product screenshots."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","0.5 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"0.5 KB gzipped"}],["$","span","Zero dependencies",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Zero dependencies"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","div",null,{"data-slot":"browser-mockup","className":"overflow-hidden rounded-2xl border bg-card/80 shadow-2xl backdrop-blur w-full max-w-md","children":[["$","div",null,{"className":"flex items-center gap-3 border-b border-border/60 px-4 py-3","children":[["$","div",null,{"className":"flex gap-1.5","children":[["$","span",null,{"className":"size-3 rounded-full bg-red-500/70"}],["$","span",null,{"className":"size-3 rounded-full bg-yellow-500/70"}],["$","span",null,{"className":"size-3 rounded-full bg-green-500/70"}]]}],["$","div",null,{"className":"mx-auto flex h-7 w-64 items-center justify-center rounded-md bg-muted/60 text-xs text-muted-foreground","children":"velora.dev"}],["$","div",null,{"className":"w-14"}]]}],["$","div",null,{"className":"flex h-40 items-center justify-center bg-gradient-to-br from-brand-from/20 via-brand-via/15 to-brand-to/20","children":["$","p",null,{"className":"text-sm text-muted-foreground","children":"Your product here"}]}]]}]}],["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}],["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/browser-mockup.json"}],["$","$L4",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/browser-mockup.json","className":"border-white/15 bg-white/5"}]]}],false,["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L4",null,{"text":"$5"}]]}],"$L6"]}],["$L7","$L8","$L9"],"$La"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+b:T1ad6,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> BrowserMockupProps</span><span style="color:#FF7B72"> extends</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#79C0FF">HTMLAttributes</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLDivElement</span><span style="color:#E6EDF3">> {</span></span>
+<span class="line"><span style="color:#FFA657">  url</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  children</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">ReactNode</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">/**</span></span>
+<span class="line"><span style="color:#8B949E"> * Browser window frame — traffic lights, URL bar, your content inside.</span></span>
+<span class="line"><span style="color:#8B949E"> */</span></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> BrowserMockup</span><span style="color:#E6EDF3">({</span></span>
+<span class="line"><span style="color:#FFA657">  url</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "velora.dev"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  children</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FF7B72">  ...</span><span style="color:#FFA657">props</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> BrowserMockupProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"browser-mockup"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">        "overflow-hidden rounded-2xl border bg-card/80 shadow-2xl backdrop-blur"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        className</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#FF7B72">      {...</span><span style="color:#E6EDF3">props</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"flex items-center gap-3 border-b border-border/60 px-4 py-3"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"flex gap-1.5"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"size-3 rounded-full bg-red-500/70"</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"size-3 rounded-full bg-yellow-500/70"</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"size-3 rounded-full bg-green-500/70"</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"mx-auto flex h-7 w-64 items-center justify-center rounded-md bg-muted/60 text-xs text-muted-foreground"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">          {</span><span style="color:#E6EDF3">url</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"w-14"</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#E6EDF3">children</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>6:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$b"}}]
+7:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+8:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+9:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+a:["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]
+e:null

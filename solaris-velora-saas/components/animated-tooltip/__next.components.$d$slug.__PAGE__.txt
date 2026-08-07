@@ -1,0 +1,176 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+4:I[56893,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"AnimatedTooltip"]
+5:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+d:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+6:Ta24,"use client";
+
+import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+
+import { cn } from "@/lib/utils";
+
+interface TooltipItem {
+  name: string;
+  role?: string;
+}
+
+interface AnimatedTooltipProps {
+  items: TooltipItem[];
+  className?: string;
+}
+
+const gradients = [
+  "from-violet-500 to-fuchsia-500",
+  "from-cyan-500 to-blue-500",
+  "from-amber-500 to-orange-600",
+  "from-emerald-500 to-teal-600",
+  "from-pink-500 to-rose-500",
+  "from-indigo-500 to-purple-600",
+];
+
+/**
+ * Avatar row with springy name tooltips on hover.
+ */
+export function AnimatedTooltip({ items, className }: AnimatedTooltipProps) {
+  const [hovered, setHovered] = useState<number | null>(null);
+
+  return (
+    <div data-slot="animated-tooltip" className={cn("flex -space-x-3", className)}>
+      {items.map((item, i) => {
+        const initials = item.name
+          .split(" ")
+          .map((w) => w[0])
+          .slice(0, 2)
+          .join("");
+        return (
+          <div
+            key={item.name}
+            className="group relative"
+            onMouseEnter={() => setHovered(i)}
+            onMouseLeave={() => setHovered(null)}
+          >
+            <AnimatePresence>
+              {hovered === i && (
+                <motion.div
+                  initial={{ opacity: 0, y: 12, scale: 0.6 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 12, scale: 0.6 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 14 }}
+                  className="absolute -top-14 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center whitespace-nowrap rounded-lg border bg-popover px-3 py-1.5 shadow-xl"
+                >
+                  <span className="text-xs font-semibold text-popover-foreground">
+                    {item.name}
+                  </span>
+                  {item.role && (
+                    <span className="text-[10px] text-muted-foreground">
+                      {item.role}
+                    </span>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <span
+              className={cn(
+                "relative flex size-11 cursor-default items-center justify-center rounded-full bg-gradient-to-br text-xs font-semibold text-white ring-2 ring-background transition-transform duration-200 group-hover:z-30 group-hover:scale-110",
+                gradients[i % gradients.length]
+              )}
+            >
+              {initials}
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Animated Tooltip"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"Avatar row with springy name tooltips on hover."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","1.0 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"1.0 KB gzipped"}],["$","span","Deps: motion/react",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Deps: motion/react"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","$L4",null,{"items":[{"name":"Maya Chen","role":"Design engineer"},{"name":"Tom Okafor","role":"Frontend lead"},{"name":"Sofia Lindqvist","role":"Indie hacker"},{"name":"Dan Romero","role":"CTO"}]}]}],["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}],["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/animated-tooltip.json"}],["$","$L5",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/animated-tooltip.json","className":"border-white/15 bg-white/5"}]]}],["$","p",null,{"className":"mt-3 text-sm text-muted-foreground","children":["Installs with: ","motion"]}],["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L5",null,{"text":"$6"}]]}],"$L7"]}],["$L8","$L9","$La"],"$Lb"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+c:T3bc5,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#A5D6FF">"use client"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { useState } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { AnimatePresence, motion } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "motion/react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> TooltipItem</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FFA657">  name</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  role</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> AnimatedTooltipProps</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FFA657">  items</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> TooltipItem</span><span style="color:#E6EDF3">[];</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#79C0FF"> gradients</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> [</span></span>
+<span class="line"><span style="color:#A5D6FF">  "from-violet-500 to-fuchsia-500"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#A5D6FF">  "from-cyan-500 to-blue-500"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#A5D6FF">  "from-amber-500 to-orange-600"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#A5D6FF">  "from-emerald-500 to-teal-600"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#A5D6FF">  "from-pink-500 to-rose-500"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#A5D6FF">  "from-indigo-500 to-purple-600"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">/**</span></span>
+<span class="line"><span style="color:#8B949E"> * Avatar row with springy name tooltips on hover.</span></span>
+<span class="line"><span style="color:#8B949E"> */</span></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> AnimatedTooltip</span><span style="color:#E6EDF3">({ </span><span style="color:#FFA657">items</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">className</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> AnimatedTooltipProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#E6EDF3"> [</span><span style="color:#79C0FF">hovered</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">setHovered</span><span style="color:#E6EDF3">] </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> useState</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#79C0FF">number</span><span style="color:#FF7B72"> |</span><span style="color:#79C0FF"> null</span><span style="color:#E6EDF3">>(</span><span style="color:#79C0FF">null</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"animated-tooltip"</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"flex -space-x-3"</span><span style="color:#E6EDF3">, className)</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#E6EDF3">items.</span><span style="color:#D2A8FF">map</span><span style="color:#E6EDF3">((</span><span style="color:#FFA657">item</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">i</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        const</span><span style="color:#79C0FF"> initials</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> item.name</span></span>
+<span class="line"><span style="color:#E6EDF3">          .</span><span style="color:#D2A8FF">split</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">" "</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#E6EDF3">          .</span><span style="color:#D2A8FF">map</span><span style="color:#E6EDF3">((</span><span style="color:#FFA657">w</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> w[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">])</span></span>
+<span class="line"><span style="color:#E6EDF3">          .</span><span style="color:#D2A8FF">slice</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#E6EDF3">          .</span><span style="color:#D2A8FF">join</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">""</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">        return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">            key</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">item.name</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">            className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"group relative"</span></span>
+<span class="line"><span style="color:#79C0FF">            onMouseEnter</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">=></span><span style="color:#D2A8FF"> setHovered</span><span style="color:#E6EDF3">(i)</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">            onMouseLeave</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">=></span><span style="color:#D2A8FF"> setHovered</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">null</span><span style="color:#E6EDF3">)</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">          ></span></span>
+<span class="line"><span style="color:#E6EDF3">            &#x3C;</span><span style="color:#7EE787">AnimatePresence</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">              {</span><span style="color:#E6EDF3">hovered </span><span style="color:#FF7B72">===</span><span style="color:#E6EDF3"> i </span><span style="color:#FF7B72">&#x26;&#x26;</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">                &#x3C;</span><span style="color:#7EE787">motion.div</span></span>
+<span class="line"><span style="color:#79C0FF">                  initial</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{ opacity: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, y: </span><span style="color:#79C0FF">12</span><span style="color:#E6EDF3">, scale: </span><span style="color:#79C0FF">0.6</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">                  animate</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{ opacity: </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, y: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, scale: </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">                  exit</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{ opacity: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, y: </span><span style="color:#79C0FF">12</span><span style="color:#E6EDF3">, scale: </span><span style="color:#79C0FF">0.6</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">                  transition</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{ type: </span><span style="color:#A5D6FF">"spring"</span><span style="color:#E6EDF3">, stiffness: </span><span style="color:#79C0FF">260</span><span style="color:#E6EDF3">, damping: </span><span style="color:#79C0FF">14</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">                  className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"absolute -top-14 left-1/2 z-50 flex -translate-x-1/2 flex-col items-center whitespace-nowrap rounded-lg border bg-popover px-3 py-1.5 shadow-xl"</span></span>
+<span class="line"><span style="color:#E6EDF3">                ></span></span>
+<span class="line"><span style="color:#E6EDF3">                  &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"text-xs font-semibold text-popover-foreground"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">                    {</span><span style="color:#E6EDF3">item.name</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">                  &#x3C;/</span><span style="color:#7EE787">span</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">                  {</span><span style="color:#E6EDF3">item.role </span><span style="color:#FF7B72">&#x26;&#x26;</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">                    &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"text-[10px] text-muted-foreground"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">                      {</span><span style="color:#E6EDF3">item.role</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">                    &#x3C;/</span><span style="color:#7EE787">span</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">                  )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">                &#x3C;/</span><span style="color:#7EE787">motion.div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">              )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">            &#x3C;/</span><span style="color:#7EE787">AnimatePresence</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">            &#x3C;</span><span style="color:#7EE787">span</span></span>
+<span class="line"><span style="color:#79C0FF">              className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">                "relative flex size-11 cursor-default items-center justify-center rounded-full bg-gradient-to-br text-xs font-semibold text-white ring-2 ring-background transition-transform duration-200 group-hover:z-30 group-hover:scale-110"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">                gradients[i </span><span style="color:#FF7B72">%</span><span style="color:#E6EDF3"> gradients.</span><span style="color:#79C0FF">length</span><span style="color:#E6EDF3">]</span></span>
+<span class="line"><span style="color:#E6EDF3">              )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">            ></span></span>
+<span class="line"><span style="color:#FF7B72">              {</span><span style="color:#E6EDF3">initials</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">            &#x3C;/</span><span style="color:#7EE787">span</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">      })</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>7:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$c"}}]
+8:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+9:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+a:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+b:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

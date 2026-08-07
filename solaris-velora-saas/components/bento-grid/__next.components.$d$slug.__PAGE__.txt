@@ -1,0 +1,198 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+14:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+17:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+18:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Bento Grid"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"Feature bento with hover-reveal CTAs and rich backgrounds."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","1.0 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"1.0 KB gzipped"}],["$","span","Deps: lucide-react",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Deps: lucide-react"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","div",null,{"data-slot":"bento-grid","className":"grid md:grid-cols-3 w-full auto-rows-[11rem] grid-cols-2 gap-3","children":[["$","div",null,{"data-slot":"bento-card","className":"group relative flex flex-col justify-end overflow-hidden rounded-2xl border bg-card transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/5","children":[["$","div",null,{"className":"absolute inset-0 overflow-hidden transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none","children":["$","svg",null,{"aria-hidden":true,"data-slot":"dot-pattern","className":"pointer-events-none absolute inset-0 size-full fill-muted-foreground/30 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]","children":[["$","defs",null,{"children":["$","pattern",null,{"id":"_S_1_","width":20,"height":20,"patternUnits":"userSpaceOnUse","children":["$","circle",null,{"cx":1,"cy":1,"r":1}]}]}],["$","rect",null,{"width":"100%","height":"100%","strokeWidth":0,"fill":"url(#_S_1_)"}]]}]}],["$","div",null,{"aria-hidden":true,"className":"pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent"}],["$","div",null,{"className":"pointer-events-none relative z-10 flex flex-col gap-1 p-6 transition-transform duration-300 ease-out motion-reduce:transition-none","children":["$undefined",["$","h3",null,{"className":"text-lg font-semibold text-card-foreground","children":"Patterns"}],["$","p",null,{"className":"text-sm text-muted-foreground","children":"Maskable backdrops."}]]}],"$undefined"]}],["$","div",null,{"data-slot":"bento-card","className":"group relative flex flex-col justify-end overflow-hidden rounded-2xl border bg-card transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/5","children":[["$","div",null,{"className":"absolute inset-0 overflow-hidden transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none","children":["$","div",null,{"aria-hidden":true,"data-slot":"meteors","className":"pointer-events-none absolute inset-0 overflow-hidden","children":[["$","span","0",{"className":"animate-meteor absolute size-0.5 rounded-full bg-foreground/70 shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:from-foreground/60 before:to-transparent","style":{"left":"11%","top":"0%","animationDelay":"0s","animationDuration":"4s"}}],"$L4","$L5","$L6","$L7","$L8"]}]}],"$L9","$La","$undefined"]}]]}]}],"$Lb","$Lc","$Ld","$Le","$Lf"]}],["$L10","$L11","$L12"],"$L13"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+4:["$","span","1",{"className":"animate-meteor absolute size-0.5 rounded-full bg-foreground/70 shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:from-foreground/60 before:to-transparent","style":{"left":"48%","top":"17%","animationDelay":"5.3s","animationDuration":"6.9s"}}]
+5:["$","span","2",{"className":"animate-meteor absolute size-0.5 rounded-full bg-foreground/70 shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:from-foreground/60 before:to-transparent","style":{"left":"85%","top":"34%","animationDelay":"3.6s","animationDuration":"6.3s"}}]
+6:["$","span","3",{"className":"animate-meteor absolute size-0.5 rounded-full bg-foreground/70 shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:from-foreground/60 before:to-transparent","style":{"left":"22%","top":"11%","animationDelay":"1.9s","animationDuration":"5.7s"}}]
+7:["$","span","4",{"className":"animate-meteor absolute size-0.5 rounded-full bg-foreground/70 shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:from-foreground/60 before:to-transparent","style":{"left":"59%","top":"28%","animationDelay":"0.2s","animationDuration":"5.1s"}}]
+8:["$","span","5",{"className":"animate-meteor absolute size-0.5 rounded-full bg-foreground/70 shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:from-foreground/60 before:to-transparent","style":{"left":"96%","top":"5%","animationDelay":"5.5s","animationDuration":"4.5s"}}]
+9:["$","div",null,{"aria-hidden":true,"className":"pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent"}]
+a:["$","div",null,{"className":"pointer-events-none relative z-10 flex flex-col gap-1 p-6 transition-transform duration-300 ease-out motion-reduce:transition-none","children":["$undefined",["$","h3",null,{"className":"text-lg font-semibold text-card-foreground","children":"Meteors"}],["$","p",null,{"className":"text-sm text-muted-foreground","children":"Streaks of light."}]]}]
+b:["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}]
+c:["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/bento-grid.json"}],["$","$L14",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/bento-grid.json","className":"border-white/15 bg-white/5"}]]}]
+d:["$","p",null,{"className":"mt-3 text-sm text-muted-foreground","children":["Installs with: ","lucide-react"]}]
+15:Ta48,import { ArrowRightIcon } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+
+interface BentoGridProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+}
+
+export function BentoGrid({ className, children, ...props }: BentoGridProps) {
+  return (
+    <div
+      data-slot="bento-grid"
+      className={cn(
+        "grid w-full auto-rows-[22rem] grid-cols-1 gap-4 md:grid-cols-3",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
+interface BentoCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  name: string;
+  description: string;
+  /** Visual filling the card behind the text (chart, image, animation…) */
+  background?: React.ReactNode;
+  icon?: React.ReactNode;
+  href?: string;
+  cta?: string;
+}
+
+export function BentoCard({
+  name,
+  description,
+  background,
+  icon,
+  href,
+  cta = "Learn more",
+  className,
+  ...props
+}: BentoCardProps) {
+  return (
+    <div
+      data-slot="bento-card"
+      className={cn(
+        "group relative flex flex-col justify-end overflow-hidden rounded-2xl border bg-card transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/5",
+        className
+      )}
+      {...props}
+    >
+      {background && (
+        <div className="absolute inset-0 overflow-hidden transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none">
+          {background}
+        </div>
+      )}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent"
+      />
+      <div
+        className={cn(
+          "pointer-events-none relative z-10 flex flex-col gap-1 p-6 transition-transform duration-300 ease-out motion-reduce:transition-none",
+          href && "group-hover:-translate-y-7"
+        )}
+      >
+        {icon && (
+          <div className="mb-2 w-fit text-primary [&_svg]:size-8">{icon}</div>
+        )}
+        <h3 className="text-lg font-semibold text-card-foreground">{name}</h3>
+        <p className="text-sm text-muted-foreground">{description}</p>
+      </div>
+      {href && (
+        <div className="absolute inset-x-0 bottom-0 z-10 translate-y-full p-6 pt-0 transition-transform duration-300 ease-out group-hover:translate-y-0 motion-reduce:translate-y-0">
+          <a
+            href={href}
+            className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+          >
+            {cta}
+            <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+e:["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L14",null,{"text":"$15"}]]}]
+16:T3a6e,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { ArrowRightIcon } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "lucide-react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> BentoGridProps</span><span style="color:#FF7B72"> extends</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#79C0FF">HTMLAttributes</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLDivElement</span><span style="color:#E6EDF3">> {</span></span>
+<span class="line"><span style="color:#FFA657">  children</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">ReactNode</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> BentoGrid</span><span style="color:#E6EDF3">({ </span><span style="color:#FFA657">className</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">children</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">...</span><span style="color:#FFA657">props</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> BentoGridProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"bento-grid"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">        "grid w-full auto-rows-[22rem] grid-cols-1 gap-4 md:grid-cols-3"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        className</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#FF7B72">      {...</span><span style="color:#E6EDF3">props</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#E6EDF3">children</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> BentoCardProps</span><span style="color:#FF7B72"> extends</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#79C0FF">HTMLAttributes</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLDivElement</span><span style="color:#E6EDF3">> {</span></span>
+<span class="line"><span style="color:#FFA657">  name</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  description</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Visual filling the card behind the text (chart, image, animation…) */</span></span>
+<span class="line"><span style="color:#FFA657">  background</span><span style="color:#FF7B72">?:</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">ReactNode</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  icon</span><span style="color:#FF7B72">?:</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">ReactNode</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  href</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  cta</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> BentoCard</span><span style="color:#E6EDF3">({</span></span>
+<span class="line"><span style="color:#FFA657">  name</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  description</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  background</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  icon</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  href</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  cta</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "Learn more"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FF7B72">  ...</span><span style="color:#FFA657">props</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> BentoCardProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"bento-card"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">        "group relative flex flex-col justify-end overflow-hidden rounded-2xl border bg-card transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/5"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        className</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#FF7B72">      {...</span><span style="color:#E6EDF3">props</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#E6EDF3">background </span><span style="color:#FF7B72">&#x26;&#x26;</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"absolute inset-0 overflow-hidden transition-transform duration-500 ease-out group-hover:scale-[1.04] motion-reduce:transition-none"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">          {</span><span style="color:#E6EDF3">background</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">        aria-hidden</span></span>
+<span class="line"><span style="color:#79C0FF">        className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent"</span></span>
+<span class="line"><span style="color:#E6EDF3">      /></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">        className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">          "pointer-events-none relative z-10 flex flex-col gap-1 p-6 transition-transform duration-300 ease-out motion-reduce:transition-none"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          href </span><span style="color:#FF7B72">&#x26;&#x26;</span><span style="color:#A5D6FF"> "group-hover:-translate-y-7"</span></span>
+<span class="line"><span style="color:#E6EDF3">        )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">      ></span></span>
+<span class="line"><span style="color:#FF7B72">        {</span><span style="color:#E6EDF3">icon </span><span style="color:#FF7B72">&#x26;&#x26;</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"mb-2 w-fit text-primary [&#x26;_svg]:size-8"</span><span style="color:#E6EDF3">></span><span style="color:#FF7B72">{</span><span style="color:#E6EDF3">icon</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3">&#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">h3</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"text-lg font-semibold text-card-foreground"</span><span style="color:#E6EDF3">></span><span style="color:#FF7B72">{</span><span style="color:#E6EDF3">name</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3">&#x3C;/</span><span style="color:#7EE787">h3</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">p</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"text-sm text-muted-foreground"</span><span style="color:#E6EDF3">></span><span style="color:#FF7B72">{</span><span style="color:#E6EDF3">description</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3">&#x3C;/</span><span style="color:#7EE787">p</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#E6EDF3">href </span><span style="color:#FF7B72">&#x26;&#x26;</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"absolute inset-x-0 bottom-0 z-10 translate-y-full p-6 pt-0 transition-transform duration-300 ease-out group-hover:translate-y-0 motion-reduce:translate-y-0"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">a</span></span>
+<span class="line"><span style="color:#79C0FF">            href</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">href</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">            className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"</span></span>
+<span class="line"><span style="color:#E6EDF3">          ></span></span>
+<span class="line"><span style="color:#FF7B72">            {</span><span style="color:#E6EDF3">cta</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">            &#x3C;</span><span style="color:#7EE787">ArrowRightIcon</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"size-4 transition-transform group-hover:translate-x-0.5"</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;/</span><span style="color:#7EE787">a</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>f:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$16"}}]
+10:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+11:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+12:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+13:["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]
+19:null

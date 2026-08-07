@@ -1,0 +1,241 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+4:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+c:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+d:"$Sreact.suspense"
+5:T96a,import { useId } from "react";
+
+import { cn } from "@/lib/utils";
+
+interface GridPatternProps extends React.SVGProps<SVGSVGElement> {
+  width?: number;
+  height?: number;
+  x?: number;
+  y?: number;
+  /** Cells to fill, as [col, row] pairs */
+  squares?: Array<[number, number]>;
+  strokeDasharray?: string;
+}
+
+export function GridPattern({
+  width = 40,
+  height = 40,
+  x = -1,
+  y = -1,
+  strokeDasharray = "0",
+  squares,
+  className,
+  ...props
+}: GridPatternProps) {
+  const id = useId();
+
+  return (
+    <svg
+      aria-hidden
+      data-slot="grid-pattern"
+      className={cn(
+        "pointer-events-none absolute inset-0 size-full fill-muted/40 stroke-border",
+        className
+      )}
+      {...props}
+    >
+      <defs>
+        <pattern
+          id={id}
+          width={width}
+          height={height}
+          patternUnits="userSpaceOnUse"
+          x={x}
+          y={y}
+        >
+          <path
+            d={`M.5 ${height}V.5H${width}`}
+            fill="none"
+            strokeDasharray={strokeDasharray}
+          />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${id})`} />
+      {squares && (
+        <svg x={x} y={y} className="overflow-visible">
+          {squares.map(([sx, sy]) => (
+            <rect
+              key={`${sx}-${sy}`}
+              strokeWidth="0"
+              width={width - 1}
+              height={height - 1}
+              x={sx * width + 1}
+              y={sy * height + 1}
+            />
+          ))}
+        </svg>
+      )}
+    </svg>
+  );
+}
+
+interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
+  width?: number;
+  height?: number;
+  cx?: number;
+  cy?: number;
+  cr?: number;
+}
+
+export function DotPattern({
+  width = 20,
+  height = 20,
+  cx = 1,
+  cy = 1,
+  cr = 1,
+  className,
+  ...props
+}: DotPatternProps) {
+  const id = useId();
+
+  return (
+    <svg
+      aria-hidden
+      data-slot="dot-pattern"
+      className={cn(
+        "pointer-events-none absolute inset-0 size-full fill-muted-foreground/30",
+        className
+      )}
+      {...props}
+    >
+      <defs>
+        <pattern
+          id={id}
+          width={width}
+          height={height}
+          patternUnits="userSpaceOnUse"
+        >
+          <circle cx={cx} cy={cy} r={cr} />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${id})`} />
+    </svg>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Grid & Dot Pattern"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"SVG grid and dot backdrops with maskable depth."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","0.8 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"0.8 KB gzipped"}],["$","span","Zero dependencies",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Zero dependencies"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","div",null,{"className":"relative flex h-full min-h-64 w-full items-center justify-center overflow-hidden rounded-lg","children":[["$","svg",null,{"aria-hidden":true,"data-slot":"grid-pattern","className":"pointer-events-none absolute inset-0 size-full fill-transparent stroke-border [mask-image:radial-gradient(ellipse_at_center,black,transparent_80%)]","children":[["$","defs",null,{"children":["$","pattern",null,{"id":"_S_1_","width":36,"height":36,"patternUnits":"userSpaceOnUse","x":-1,"y":-1,"children":["$","path",null,{"d":"M.5 36V.5H36","fill":"none","strokeDasharray":"0"}]}]}],["$","rect",null,{"width":"100%","height":"100%","strokeWidth":0,"fill":"url(#_S_1_)"}],"$undefined"]}],["$","svg",null,{"aria-hidden":true,"data-slot":"dot-pattern","className":"pointer-events-none absolute inset-0 size-full fill-muted-foreground/30 [mask-image:radial-gradient(ellipse_at_center,black,transparent_55%)]","children":[["$","defs",null,{"children":["$","pattern",null,{"id":"_S_2_","width":20,"height":20,"patternUnits":"userSpaceOnUse","children":["$","circle",null,{"cx":1,"cy":1,"r":1}]}]}],["$","rect",null,{"width":"100%","height":"100%","strokeWidth":0,"fill":"url(#_S_2_)"}]]}],["$","p",null,{"className":"relative text-xl font-semibold","children":"Patterns"}]]}]}],["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}],["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/grid-pattern.json"}],["$","$L4",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/grid-pattern.json","className":"border-white/15 bg-white/5"}]]}],false,["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L4",null,{"text":"$5"}]]}],"$L6"]}],["$L7","$L8","$L9"],"$La"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+b:T4f4f,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { useId } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> GridPatternProps</span><span style="color:#FF7B72"> extends</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#79C0FF">SVGProps</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">SVGSVGElement</span><span style="color:#E6EDF3">> {</span></span>
+<span class="line"><span style="color:#FFA657">  width</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  height</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  x</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  y</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Cells to fill, as [col, row] pairs */</span></span>
+<span class="line"><span style="color:#FFA657">  squares</span><span style="color:#FF7B72">?:</span><span style="color:#FFA657"> Array</span><span style="color:#E6EDF3">&#x3C;[</span><span style="color:#79C0FF">number</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">number</span><span style="color:#E6EDF3">]>;</span></span>
+<span class="line"><span style="color:#FFA657">  strokeDasharray</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> GridPattern</span><span style="color:#E6EDF3">({</span></span>
+<span class="line"><span style="color:#FFA657">  width</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 40</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  height</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 40</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  x</span><span style="color:#FF7B72"> =</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  y</span><span style="color:#FF7B72"> =</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  strokeDasharray</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "0"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  squares</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FF7B72">  ...</span><span style="color:#FFA657">props</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> GridPatternProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> id</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useId</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">svg</span></span>
+<span class="line"><span style="color:#79C0FF">      aria-hidden</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"grid-pattern"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">        "pointer-events-none absolute inset-0 size-full fill-muted/40 stroke-border"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        className</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#FF7B72">      {...</span><span style="color:#E6EDF3">props</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">defs</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">pattern</span></span>
+<span class="line"><span style="color:#79C0FF">          id</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">id</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          width</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">width</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          height</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">height</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          patternUnits</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"userSpaceOnUse"</span></span>
+<span class="line"><span style="color:#79C0FF">          x</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">x</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          y</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">y</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">        ></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">path</span></span>
+<span class="line"><span style="color:#79C0FF">            d</span><span style="color:#FF7B72">={</span><span style="color:#A5D6FF">`M.5 ${</span><span style="color:#E6EDF3">height</span><span style="color:#A5D6FF">}V.5H${</span><span style="color:#E6EDF3">width</span><span style="color:#A5D6FF">}`</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">            fill</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"none"</span></span>
+<span class="line"><span style="color:#79C0FF">            strokeDasharray</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">strokeDasharray</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">          /></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;/</span><span style="color:#7EE787">pattern</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;/</span><span style="color:#7EE787">defs</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">rect</span><span style="color:#79C0FF"> width</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"100%"</span><span style="color:#79C0FF"> height</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"100%"</span><span style="color:#79C0FF"> strokeWidth</span><span style="color:#FF7B72">={</span><span style="color:#79C0FF">0</span><span style="color:#FF7B72">}</span><span style="color:#79C0FF"> fill</span><span style="color:#FF7B72">={</span><span style="color:#A5D6FF">`url(#${</span><span style="color:#E6EDF3">id</span><span style="color:#A5D6FF">})`</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#E6EDF3">squares </span><span style="color:#FF7B72">&#x26;&#x26;</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">svg</span><span style="color:#79C0FF"> x</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">x</span><span style="color:#FF7B72">}</span><span style="color:#79C0FF"> y</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">y</span><span style="color:#FF7B72">}</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"overflow-visible"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">          {</span><span style="color:#E6EDF3">squares.</span><span style="color:#D2A8FF">map</span><span style="color:#E6EDF3">(([</span><span style="color:#FFA657">sx</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">sy</span><span style="color:#E6EDF3">]) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">            &#x3C;</span><span style="color:#7EE787">rect</span></span>
+<span class="line"><span style="color:#79C0FF">              key</span><span style="color:#FF7B72">={</span><span style="color:#A5D6FF">`${</span><span style="color:#E6EDF3">sx</span><span style="color:#A5D6FF">}-${</span><span style="color:#E6EDF3">sy</span><span style="color:#A5D6FF">}`</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">              strokeWidth</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"0"</span></span>
+<span class="line"><span style="color:#79C0FF">              width</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">width </span><span style="color:#FF7B72">-</span><span style="color:#79C0FF"> 1</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">              height</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">height </span><span style="color:#FF7B72">-</span><span style="color:#79C0FF"> 1</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">              x</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">sx </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> width </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">              y</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">sy </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> height </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">            /></span></span>
+<span class="line"><span style="color:#E6EDF3">          ))</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;/</span><span style="color:#7EE787">svg</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">svg</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> DotPatternProps</span><span style="color:#FF7B72"> extends</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#79C0FF">SVGProps</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">SVGSVGElement</span><span style="color:#E6EDF3">> {</span></span>
+<span class="line"><span style="color:#FFA657">  width</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  height</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  cx</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  cy</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  cr</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> DotPattern</span><span style="color:#E6EDF3">({</span></span>
+<span class="line"><span style="color:#FFA657">  width</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 20</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  height</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 20</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  cx</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  cy</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  cr</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FF7B72">  ...</span><span style="color:#FFA657">props</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> DotPatternProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> id</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useId</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">svg</span></span>
+<span class="line"><span style="color:#79C0FF">      aria-hidden</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"dot-pattern"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">        "pointer-events-none absolute inset-0 size-full fill-muted-foreground/30"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        className</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#FF7B72">      {...</span><span style="color:#E6EDF3">props</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">defs</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">pattern</span></span>
+<span class="line"><span style="color:#79C0FF">          id</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">id</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          width</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">width</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          height</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">height</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          patternUnits</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"userSpaceOnUse"</span></span>
+<span class="line"><span style="color:#E6EDF3">        ></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">circle</span><span style="color:#79C0FF"> cx</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">cx</span><span style="color:#FF7B72">}</span><span style="color:#79C0FF"> cy</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">cy</span><span style="color:#FF7B72">}</span><span style="color:#79C0FF"> r</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">cr</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;/</span><span style="color:#7EE787">pattern</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;/</span><span style="color:#7EE787">defs</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">rect</span><span style="color:#79C0FF"> width</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"100%"</span><span style="color:#79C0FF"> height</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"100%"</span><span style="color:#79C0FF"> strokeWidth</span><span style="color:#FF7B72">={</span><span style="color:#79C0FF">0</span><span style="color:#FF7B72">}</span><span style="color:#79C0FF"> fill</span><span style="color:#FF7B72">={</span><span style="color:#A5D6FF">`url(#${</span><span style="color:#E6EDF3">id</span><span style="color:#A5D6FF">})`</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">svg</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>6:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$b"}}]
+7:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+8:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+9:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+a:["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]
+e:null

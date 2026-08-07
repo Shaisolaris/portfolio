@@ -1,0 +1,274 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+4:I[96929,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"Particles"]
+5:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+d:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+6:Tdc7,"use client";
+
+import { useEffect, useRef } from "react";
+
+import { cn } from "@/lib/utils";
+
+interface ParticlesProps {
+  className?: string;
+  quantity?: number;
+  /** "r, g, b" string. Defaults to the inherited text color, so it adapts to the theme. */
+  color?: string;
+}
+
+interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+  alpha: number;
+  twinkle: number;
+}
+
+/**
+ * Drifting, twinkling particle field on a lightweight canvas.
+ * Renders a single static frame when reduced motion is preferred.
+ */
+export function Particles({ className, quantity = 60, color }: ParticlesProps) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let particles: Particle[] = [];
+    let raf = 0;
+    let width = 0;
+    let height = 0;
+
+    // The canvas inherits `color` from its context, so particles match
+    // the current theme. Computed colors resolve to rgb() in browsers.
+    const resolveColor = () => {
+      if (color) return color;
+      const match = getComputedStyle(canvas).color.match(/\d+(\.\d+)?/g);
+      return match ? match.slice(0, 3).join(", ") : "255, 255, 255";
+    };
+    let rgb = "255, 255, 255";
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      rgb = resolveColor();
+      particles = Array.from({ length: quantity }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: (Math.random() - 0.5) * 0.15,
+        size: Math.random() * 1.6 + 0.4,
+        alpha: Math.random() * 0.5 + 0.1,
+        twinkle: Math.random() * 0.02 + 0.005,
+      }));
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, width, height);
+      for (const p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${rgb}, ${p.alpha})`;
+        ctx.fill();
+      }
+    };
+
+    const tick = () => {
+      for (const p of particles) {
+        p.x = (p.x + p.vx + width) % width;
+        p.y = (p.y + p.vy + height) % height;
+        p.alpha += p.twinkle;
+        if (p.alpha > 0.6 || p.alpha < 0.1) p.twinkle *= -1;
+      }
+      draw();
+      raf = requestAnimationFrame(tick);
+    };
+
+    resize();
+    if (reduced) {
+      draw();
+    } else {
+      raf = requestAnimationFrame(tick);
+    }
+
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(canvas);
+
+    // Re-resolve the color when the theme class changes on <html>
+    const themeObserver = new MutationObserver(() => {
+      rgb = resolveColor();
+      if (reduced) draw();
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => {
+      cancelAnimationFrame(raf);
+      resizeObserver.disconnect();
+      themeObserver.disconnect();
+    };
+  }, [quantity, color]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      aria-hidden
+      data-slot="particles"
+      className={cn("pointer-events-none absolute inset-0 size-full", className)}
+    />
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Particles"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"Drifting, twinkling particle field on a lightweight canvas."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","1.4 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"1.4 KB gzipped"}],["$","span","Zero dependencies",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Zero dependencies"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","div",null,{"className":"relative flex h-full min-h-64 w-full items-center justify-center overflow-hidden rounded-lg bg-neutral-950 text-white","children":[["$","$L4",null,{"quantity":80}],["$","p",null,{"className":"relative text-xl font-semibold","children":"Particles"}]]}]}],["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}],["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/particles.json"}],["$","$L5",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/particles.json","className":"border-white/15 bg-white/5"}]]}],false,["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L5",null,{"text":"$6"}]]}],"$L7"]}],["$L8","$L9","$La"],"$Lb"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+c:T6075,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#A5D6FF">"use client"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { useEffect, useRef } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> ParticlesProps</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  quantity</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** "r, g, b" string. Defaults to the inherited text color, so it adapts to the theme. */</span></span>
+<span class="line"><span style="color:#FFA657">  color</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> Particle</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FFA657">  x</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  y</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  vx</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  vy</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  size</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  alpha</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  twinkle</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">/**</span></span>
+<span class="line"><span style="color:#8B949E"> * Drifting, twinkling particle field on a lightweight canvas.</span></span>
+<span class="line"><span style="color:#8B949E"> * Renders a single static frame when reduced motion is preferred.</span></span>
+<span class="line"><span style="color:#8B949E"> */</span></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> Particles</span><span style="color:#E6EDF3">({ </span><span style="color:#FFA657">className</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">quantity</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 60</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">color</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> ParticlesProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> canvasRef</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useRef</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLCanvasElement</span><span style="color:#E6EDF3">>(</span><span style="color:#79C0FF">null</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">  useEffect</span><span style="color:#E6EDF3">(() </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> canvas</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> canvasRef.current;</span></span>
+<span class="line"><span style="color:#FF7B72">    if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">canvas) </span><span style="color:#FF7B72">return</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> ctx</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> canvas.</span><span style="color:#D2A8FF">getContext</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"2d"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">ctx) </span><span style="color:#FF7B72">return</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> reduced</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> window.</span><span style="color:#D2A8FF">matchMedia</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">      "(prefers-reduced-motion: reduce)"</span></span>
+<span class="line"><span style="color:#E6EDF3">    ).matches;</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> dpr</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> Math.</span><span style="color:#D2A8FF">min</span><span style="color:#E6EDF3">(window.devicePixelRatio </span><span style="color:#FF7B72">||</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    let</span><span style="color:#E6EDF3"> particles</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> Particle</span><span style="color:#E6EDF3">[] </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> [];</span></span>
+<span class="line"><span style="color:#FF7B72">    let</span><span style="color:#E6EDF3"> raf </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    let</span><span style="color:#E6EDF3"> width </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    let</span><span style="color:#E6EDF3"> height </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">    // The canvas inherits `color` from its context, so particles match</span></span>
+<span class="line"><span style="color:#8B949E">    // the current theme. Computed colors resolve to rgb() in browsers.</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#D2A8FF"> resolveColor</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> () </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      if</span><span style="color:#E6EDF3"> (color) </span><span style="color:#FF7B72">return</span><span style="color:#E6EDF3"> color;</span></span>
+<span class="line"><span style="color:#FF7B72">      const</span><span style="color:#79C0FF"> match</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> getComputedStyle</span><span style="color:#E6EDF3">(canvas).color.</span><span style="color:#D2A8FF">match</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">/</span><span style="color:#79C0FF">\d</span><span style="color:#FF7B72">+</span><span style="color:#A5D6FF">(</span><span style="color:#7EE787;font-weight:bold">\.</span><span style="color:#79C0FF">\d</span><span style="color:#FF7B72">+</span><span style="color:#A5D6FF">)</span><span style="color:#FF7B72">?</span><span style="color:#A5D6FF">/</span><span style="color:#FF7B72">g</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">      return</span><span style="color:#E6EDF3"> match </span><span style="color:#FF7B72">?</span><span style="color:#E6EDF3"> match.</span><span style="color:#D2A8FF">slice</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">3</span><span style="color:#E6EDF3">).</span><span style="color:#D2A8FF">join</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">", "</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">:</span><span style="color:#A5D6FF"> "255, 255, 255"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#FF7B72">    let</span><span style="color:#E6EDF3"> rgb </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> "255, 255, 255"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#D2A8FF"> resize</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> () </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      const</span><span style="color:#79C0FF"> rect</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> canvas.</span><span style="color:#D2A8FF">getBoundingClientRect</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">      width </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> rect.width;</span></span>
+<span class="line"><span style="color:#E6EDF3">      height </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> rect.height;</span></span>
+<span class="line"><span style="color:#E6EDF3">      canvas.width </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> width </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> dpr;</span></span>
+<span class="line"><span style="color:#E6EDF3">      canvas.height </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> height </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> dpr;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ctx.</span><span style="color:#D2A8FF">setTransform</span><span style="color:#E6EDF3">(dpr, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, dpr, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      rgb </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> resolveColor</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">      particles </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> Array.</span><span style="color:#D2A8FF">from</span><span style="color:#E6EDF3">({ length: quantity }, () </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> ({</span></span>
+<span class="line"><span style="color:#E6EDF3">        x: Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> width,</span></span>
+<span class="line"><span style="color:#E6EDF3">        y: Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> height,</span></span>
+<span class="line"><span style="color:#E6EDF3">        vx: (Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">-</span><span style="color:#79C0FF"> 0.5</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 0.15</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        vy: (Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">-</span><span style="color:#79C0FF"> 0.5</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 0.15</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        size: Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 1.6</span><span style="color:#FF7B72"> +</span><span style="color:#79C0FF"> 0.4</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        alpha: Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 0.5</span><span style="color:#FF7B72"> +</span><span style="color:#79C0FF"> 0.1</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        twinkle: Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 0.02</span><span style="color:#FF7B72"> +</span><span style="color:#79C0FF"> 0.005</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      }));</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#D2A8FF"> draw</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> () </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      ctx.</span><span style="color:#D2A8FF">clearRect</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, width, height);</span></span>
+<span class="line"><span style="color:#FF7B72">      for</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">const</span><span style="color:#79C0FF"> p</span><span style="color:#FF7B72"> of</span><span style="color:#E6EDF3"> particles) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        ctx.</span><span style="color:#D2A8FF">beginPath</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">        ctx.</span><span style="color:#D2A8FF">arc</span><span style="color:#E6EDF3">(p.x, p.y, p.size, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, Math.</span><span style="color:#79C0FF">PI</span><span style="color:#FF7B72"> *</span><span style="color:#79C0FF"> 2</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">        ctx.fillStyle </span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF"> `rgba(${</span><span style="color:#E6EDF3">rgb</span><span style="color:#A5D6FF">}, ${</span><span style="color:#E6EDF3">p</span><span style="color:#A5D6FF">.</span><span style="color:#E6EDF3">alpha</span><span style="color:#A5D6FF">})`</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">        ctx.</span><span style="color:#D2A8FF">fill</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#D2A8FF"> tick</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> () </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">      for</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">const</span><span style="color:#79C0FF"> p</span><span style="color:#FF7B72"> of</span><span style="color:#E6EDF3"> particles) {</span></span>
+<span class="line"><span style="color:#E6EDF3">        p.x </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (p.x </span><span style="color:#FF7B72">+</span><span style="color:#E6EDF3"> p.vx </span><span style="color:#FF7B72">+</span><span style="color:#E6EDF3"> width) </span><span style="color:#FF7B72">%</span><span style="color:#E6EDF3"> width;</span></span>
+<span class="line"><span style="color:#E6EDF3">        p.y </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> (p.y </span><span style="color:#FF7B72">+</span><span style="color:#E6EDF3"> p.vy </span><span style="color:#FF7B72">+</span><span style="color:#E6EDF3"> height) </span><span style="color:#FF7B72">%</span><span style="color:#E6EDF3"> height;</span></span>
+<span class="line"><span style="color:#E6EDF3">        p.alpha </span><span style="color:#FF7B72">+=</span><span style="color:#E6EDF3"> p.twinkle;</span></span>
+<span class="line"><span style="color:#FF7B72">        if</span><span style="color:#E6EDF3"> (p.alpha </span><span style="color:#FF7B72">></span><span style="color:#79C0FF"> 0.6</span><span style="color:#FF7B72"> ||</span><span style="color:#E6EDF3"> p.alpha </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#79C0FF"> 0.1</span><span style="color:#E6EDF3">) p.twinkle </span><span style="color:#FF7B72">*=</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span></span>
+<span class="line"><span style="color:#D2A8FF">      draw</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">      raf </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> requestAnimationFrame</span><span style="color:#E6EDF3">(tick);</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">    resize</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#FF7B72">    if</span><span style="color:#E6EDF3"> (reduced) {</span></span>
+<span class="line"><span style="color:#D2A8FF">      draw</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">else</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      raf </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> requestAnimationFrame</span><span style="color:#E6EDF3">(tick);</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> resizeObserver</span><span style="color:#FF7B72"> =</span><span style="color:#FF7B72"> new</span><span style="color:#D2A8FF"> ResizeObserver</span><span style="color:#E6EDF3">(resize);</span></span>
+<span class="line"><span style="color:#E6EDF3">    resizeObserver.</span><span style="color:#D2A8FF">observe</span><span style="color:#E6EDF3">(canvas);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">    // Re-resolve the color when the theme class changes on &#x3C;html></span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> themeObserver</span><span style="color:#FF7B72"> =</span><span style="color:#FF7B72"> new</span><span style="color:#D2A8FF"> MutationObserver</span><span style="color:#E6EDF3">(() </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      rgb </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> resolveColor</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#FF7B72">      if</span><span style="color:#E6EDF3"> (reduced) </span><span style="color:#D2A8FF">draw</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">    });</span></span>
+<span class="line"><span style="color:#E6EDF3">    themeObserver.</span><span style="color:#D2A8FF">observe</span><span style="color:#E6EDF3">(document.documentElement, {</span></span>
+<span class="line"><span style="color:#E6EDF3">      attributes: </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      attributeFilter: [</span><span style="color:#A5D6FF">"class"</span><span style="color:#E6EDF3">],</span></span>
+<span class="line"><span style="color:#E6EDF3">    });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> () </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#D2A8FF">      cancelAnimationFrame</span><span style="color:#E6EDF3">(raf);</span></span>
+<span class="line"><span style="color:#E6EDF3">      resizeObserver.</span><span style="color:#D2A8FF">disconnect</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">      themeObserver.</span><span style="color:#D2A8FF">disconnect</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  }, [quantity, color]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">canvas</span></span>
+<span class="line"><span style="color:#79C0FF">      ref</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">canvasRef</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      aria-hidden</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"particles"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"pointer-events-none absolute inset-0 size-full"</span><span style="color:#E6EDF3">, className)</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    /></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>7:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$c"}}]
+8:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+9:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+a:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+b:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

@@ -1,0 +1,236 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+4:I[84111,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"ConfettiButton"]
+5:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+d:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+6:Tbf1,"use client";
+
+import { cn } from "@/lib/utils";
+
+interface BurstOptions {
+  /** Origin in viewport px; defaults to screen center */
+  x?: number;
+  y?: number;
+  count?: number;
+  colors?: string[];
+}
+
+const defaultColors = ["#8b5cf6", "#d946ef", "#22d3ee", "#fbbf24", "#34d399"];
+
+/**
+ * Fire a confetti burst — no canvas library, ~2s, cleans up after itself.
+ * No-op when the user prefers reduced motion.
+ */
+export function confettiBurst({
+  x = window.innerWidth / 2,
+  y = window.innerHeight / 2,
+  count = 90,
+  colors = defaultColors,
+}: BurstOptions = {}) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const canvas = document.createElement("canvas");
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+  canvas.style.cssText =
+    "position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9999";
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext("2d")!;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const particles = Array.from({ length: count }, () => {
+    const angle = Math.random() * Math.PI * 2;
+    const velocity = 6 + Math.random() * 8;
+    return {
+      x,
+      y,
+      vx: Math.cos(angle) * velocity,
+      vy: Math.sin(angle) * velocity - 4,
+      size: 4 + Math.random() * 5,
+      rotation: Math.random() * 360,
+      spin: (Math.random() - 0.5) * 20,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      life: 1,
+    };
+  });
+
+  const start = performance.now();
+  const tick = (now: number) => {
+    const elapsed = (now - start) / 1000;
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    let alive = false;
+    for (const p of particles) {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.25;
+      p.vx *= 0.99;
+      p.rotation += p.spin;
+      p.life = Math.max(0, 1 - elapsed / 1.8);
+      if (p.life <= 0) continue;
+      alive = true;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate((p.rotation * Math.PI) / 180);
+      ctx.globalAlpha = p.life;
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+      ctx.restore();
+    }
+    if (alive) {
+      requestAnimationFrame(tick);
+    } else {
+      canvas.remove();
+    }
+  };
+  requestAnimationFrame(tick);
+}
+
+interface ConfettiButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode;
+}
+
+export function ConfettiButton({
+  children,
+  className,
+  onClick,
+  ...props
+}: ConfettiButtonProps) {
+  return (
+    <button
+      data-slot="confetti-button"
+      className={cn(
+        "inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-full border bg-card px-6 text-sm font-medium transition-transform hover:scale-[1.03] active:scale-[0.97]",
+        className
+      )}
+      onClick={(e) => {
+        confettiBurst({ x: e.clientX, y: e.clientY });
+        onClick?.(e);
+      }}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Confetti"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"Dependency-free confetti burst, fired from anywhere."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","1.4 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"1.4 KB gzipped"}],["$","span","Zero dependencies",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Zero dependencies"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","$L4",null,{"children":"🎉 Click me"}]}],["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}],["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/confetti.json"}],["$","$L5",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/confetti.json","className":"border-white/15 bg-white/5"}]]}],false,["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L5",null,{"text":"$6"}]]}],"$L7"]}],["$L8","$L9","$La"],"$Lb"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+c:T53e0,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#A5D6FF">"use client"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> BurstOptions</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#8B949E">  /** Origin in viewport px; defaults to screen center */</span></span>
+<span class="line"><span style="color:#FFA657">  x</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  y</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  count</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  colors</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">[];</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#79C0FF"> defaultColors</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> [</span><span style="color:#A5D6FF">"#8b5cf6"</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"#d946ef"</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"#22d3ee"</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"#fbbf24"</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">"#34d399"</span><span style="color:#E6EDF3">];</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">/**</span></span>
+<span class="line"><span style="color:#8B949E"> * Fire a confetti burst — no canvas library, ~2s, cleans up after itself.</span></span>
+<span class="line"><span style="color:#8B949E"> * No-op when the user prefers reduced motion.</span></span>
+<span class="line"><span style="color:#8B949E"> */</span></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> confettiBurst</span><span style="color:#E6EDF3">({</span></span>
+<span class="line"><span style="color:#FFA657">  x</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> window.innerWidth </span><span style="color:#FF7B72">/</span><span style="color:#79C0FF"> 2</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  y</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> window.innerHeight </span><span style="color:#FF7B72">/</span><span style="color:#79C0FF"> 2</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  count</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 90</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  colors</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> defaultColors,</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> BurstOptions</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> {}) {</span></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (window.</span><span style="color:#D2A8FF">matchMedia</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"(prefers-reduced-motion: reduce)"</span><span style="color:#E6EDF3">).matches) </span><span style="color:#FF7B72">return</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> canvas</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> document.</span><span style="color:#D2A8FF">createElement</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"canvas"</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> dpr</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> Math.</span><span style="color:#D2A8FF">min</span><span style="color:#E6EDF3">(window.devicePixelRatio </span><span style="color:#FF7B72">||</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  canvas.width </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> window.innerWidth </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> dpr;</span></span>
+<span class="line"><span style="color:#E6EDF3">  canvas.height </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> window.innerHeight </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> dpr;</span></span>
+<span class="line"><span style="color:#E6EDF3">  canvas.style.cssText </span><span style="color:#FF7B72">=</span></span>
+<span class="line"><span style="color:#A5D6FF">    "position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:9999"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  document.body.</span><span style="color:#D2A8FF">appendChild</span><span style="color:#E6EDF3">(canvas);</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> ctx</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> canvas.</span><span style="color:#D2A8FF">getContext</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"2d"</span><span style="color:#E6EDF3">)</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">  ctx.</span><span style="color:#D2A8FF">setTransform</span><span style="color:#E6EDF3">(dpr, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, dpr, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> particles</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> Array.</span><span style="color:#D2A8FF">from</span><span style="color:#E6EDF3">({ length: count }, () </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> angle</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> Math.</span><span style="color:#79C0FF">PI</span><span style="color:#FF7B72"> *</span><span style="color:#79C0FF"> 2</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> velocity</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 6</span><span style="color:#FF7B72"> +</span><span style="color:#E6EDF3"> Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 8</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      x,</span></span>
+<span class="line"><span style="color:#E6EDF3">      y,</span></span>
+<span class="line"><span style="color:#E6EDF3">      vx: Math.</span><span style="color:#D2A8FF">cos</span><span style="color:#E6EDF3">(angle) </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> velocity,</span></span>
+<span class="line"><span style="color:#E6EDF3">      vy: Math.</span><span style="color:#D2A8FF">sin</span><span style="color:#E6EDF3">(angle) </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> velocity </span><span style="color:#FF7B72">-</span><span style="color:#79C0FF"> 4</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      size: </span><span style="color:#79C0FF">4</span><span style="color:#FF7B72"> +</span><span style="color:#E6EDF3"> Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 5</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      rotation: Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 360</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      spin: (Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">-</span><span style="color:#79C0FF"> 0.5</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 20</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      color: colors[Math.</span><span style="color:#D2A8FF">floor</span><span style="color:#E6EDF3">(Math.</span><span style="color:#D2A8FF">random</span><span style="color:#E6EDF3">() </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> colors.</span><span style="color:#79C0FF">length</span><span style="color:#E6EDF3">)],</span></span>
+<span class="line"><span style="color:#E6EDF3">      life: </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    };</span></span>
+<span class="line"><span style="color:#E6EDF3">  });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> start</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> performance.</span><span style="color:#D2A8FF">now</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#D2A8FF"> tick</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">now</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> elapsed</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> (now </span><span style="color:#FF7B72">-</span><span style="color:#E6EDF3"> start) </span><span style="color:#FF7B72">/</span><span style="color:#79C0FF"> 1000</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    ctx.</span><span style="color:#D2A8FF">clearRect</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, window.innerWidth, window.innerHeight);</span></span>
+<span class="line"><span style="color:#FF7B72">    let</span><span style="color:#E6EDF3"> alive </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> false</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    for</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">const</span><span style="color:#79C0FF"> p</span><span style="color:#FF7B72"> of</span><span style="color:#E6EDF3"> particles) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      p.x </span><span style="color:#FF7B72">+=</span><span style="color:#E6EDF3"> p.vx;</span></span>
+<span class="line"><span style="color:#E6EDF3">      p.y </span><span style="color:#FF7B72">+=</span><span style="color:#E6EDF3"> p.vy;</span></span>
+<span class="line"><span style="color:#E6EDF3">      p.vy </span><span style="color:#FF7B72">+=</span><span style="color:#79C0FF"> 0.25</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      p.vx </span><span style="color:#FF7B72">*=</span><span style="color:#79C0FF"> 0.99</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      p.rotation </span><span style="color:#FF7B72">+=</span><span style="color:#E6EDF3"> p.spin;</span></span>
+<span class="line"><span style="color:#E6EDF3">      p.life </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> Math.</span><span style="color:#D2A8FF">max</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">1</span><span style="color:#FF7B72"> -</span><span style="color:#E6EDF3"> elapsed </span><span style="color:#FF7B72">/</span><span style="color:#79C0FF"> 1.8</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">      if</span><span style="color:#E6EDF3"> (p.life </span><span style="color:#FF7B72">&#x3C;=</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">continue</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      alive </span><span style="color:#FF7B72">=</span><span style="color:#79C0FF"> true</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ctx.</span><span style="color:#D2A8FF">save</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">      ctx.</span><span style="color:#D2A8FF">translate</span><span style="color:#E6EDF3">(p.x, p.y);</span></span>
+<span class="line"><span style="color:#E6EDF3">      ctx.</span><span style="color:#D2A8FF">rotate</span><span style="color:#E6EDF3">((p.rotation </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> Math.</span><span style="color:#79C0FF">PI</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">/</span><span style="color:#79C0FF"> 180</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      ctx.globalAlpha </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> p.life;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ctx.fillStyle </span><span style="color:#FF7B72">=</span><span style="color:#E6EDF3"> p.color;</span></span>
+<span class="line"><span style="color:#E6EDF3">      ctx.</span><span style="color:#D2A8FF">fillRect</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">-</span><span style="color:#E6EDF3">p.size </span><span style="color:#FF7B72">/</span><span style="color:#79C0FF"> 2</span><span style="color:#E6EDF3">, </span><span style="color:#FF7B72">-</span><span style="color:#E6EDF3">p.size </span><span style="color:#FF7B72">/</span><span style="color:#79C0FF"> 2</span><span style="color:#E6EDF3">, p.size, p.size </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 0.6</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">      ctx.</span><span style="color:#D2A8FF">restore</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    if</span><span style="color:#E6EDF3"> (alive) {</span></span>
+<span class="line"><span style="color:#D2A8FF">      requestAnimationFrame</span><span style="color:#E6EDF3">(tick);</span></span>
+<span class="line"><span style="color:#E6EDF3">    } </span><span style="color:#FF7B72">else</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">      canvas.</span><span style="color:#D2A8FF">remove</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#E6EDF3">  };</span></span>
+<span class="line"><span style="color:#D2A8FF">  requestAnimationFrame</span><span style="color:#E6EDF3">(tick);</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> ConfettiButtonProps</span></span>
+<span class="line"><span style="color:#FF7B72">  extends</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#79C0FF">ButtonHTMLAttributes</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLButtonElement</span><span style="color:#E6EDF3">> {</span></span>
+<span class="line"><span style="color:#FFA657">  children</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">ReactNode</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> ConfettiButton</span><span style="color:#E6EDF3">({</span></span>
+<span class="line"><span style="color:#FFA657">  children</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  onClick</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FF7B72">  ...</span><span style="color:#FFA657">props</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> ConfettiButtonProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">button</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"confetti-button"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">        "inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-full border bg-card px-6 text-sm font-medium transition-transform hover:scale-[1.03] active:scale-[0.97]"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        className</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      onClick</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">(</span><span style="color:#FFA657">e</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#D2A8FF">        confettiBurst</span><span style="color:#E6EDF3">({ x: e.clientX, y: e.clientY });</span></span>
+<span class="line"><span style="color:#D2A8FF">        onClick</span><span style="color:#E6EDF3">?.(e);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#FF7B72">      {...</span><span style="color:#E6EDF3">props</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#E6EDF3">children</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">button</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>7:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$c"}}]
+8:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+9:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+a:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+b:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

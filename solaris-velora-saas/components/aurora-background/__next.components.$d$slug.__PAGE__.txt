@@ -1,0 +1,91 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+4:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+c:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+d:"$Sreact.suspense"
+5:T519,import { cn } from "@/lib/utils";
+
+interface AuroraBackgroundProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Overall opacity of the aurora blobs */
+  intensity?: "subtle" | "medium" | "vivid";
+}
+
+const intensityClass = {
+  subtle: "opacity-25 dark:opacity-20",
+  medium: "opacity-40 dark:opacity-30",
+  vivid: "opacity-60 dark:opacity-45",
+};
+
+/**
+ * Velora's signature animated aurora backdrop. Absolutely positioned —
+ * place inside a `relative overflow-hidden` section.
+ */
+export function AuroraBackground({
+  className,
+  intensity = "medium",
+  ...props
+}: AuroraBackgroundProps) {
+  return (
+    <div
+      aria-hidden
+      data-slot="aurora-background"
+      className={cn(
+        "pointer-events-none absolute inset-0 overflow-hidden",
+        intensityClass[intensity],
+        className
+      )}
+      {...props}
+    >
+      <div className="animate-aurora-1 absolute -top-1/4 left-[10%] size-[44rem] rounded-full bg-brand-from blur-[120px] will-change-transform" />
+      <div className="animate-aurora-2 absolute top-[5%] right-[5%] size-[38rem] rounded-full bg-brand-via blur-[130px] will-change-transform" />
+      <div className="animate-aurora-3 absolute -bottom-1/4 left-[35%] size-[40rem] rounded-full bg-brand-to blur-[140px] will-change-transform" />
+    </div>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Aurora Background"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"Velora's signature drifting aurora gradient backdrop."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","0.6 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"0.6 KB gzipped"}],["$","span","Zero dependencies",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Zero dependencies"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","div",null,{"className":"relative flex h-full min-h-64 w-full items-center justify-center overflow-hidden rounded-lg","children":[["$","div",null,{"aria-hidden":true,"data-slot":"aurora-background","className":"pointer-events-none absolute inset-0 overflow-hidden opacity-60 dark:opacity-45","children":[["$","div",null,{"className":"animate-aurora-1 absolute -top-1/4 left-[10%] size-[44rem] rounded-full bg-brand-from blur-[120px] will-change-transform"}],["$","div",null,{"className":"animate-aurora-2 absolute top-[5%] right-[5%] size-[38rem] rounded-full bg-brand-via blur-[130px] will-change-transform"}],["$","div",null,{"className":"animate-aurora-3 absolute -bottom-1/4 left-[35%] size-[40rem] rounded-full bg-brand-to blur-[140px] will-change-transform"}]]}],["$","p",null,{"className":"relative text-xl font-semibold","children":"Aurora"}]]}]}],["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}],["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/aurora-background.json"}],["$","$L4",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/aurora-background.json","className":"border-white/15 bg-white/5"}]]}],false,["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L4",null,{"text":"$5"}]]}],"$L6"]}],["$L7","$L8","$L9"],"$La"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+b:T17d2,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> AuroraBackgroundProps</span><span style="color:#FF7B72"> extends</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#79C0FF">HTMLAttributes</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLDivElement</span><span style="color:#E6EDF3">> {</span></span>
+<span class="line"><span style="color:#8B949E">  /** Overall opacity of the aurora blobs */</span></span>
+<span class="line"><span style="color:#FFA657">  intensity</span><span style="color:#FF7B72">?:</span><span style="color:#A5D6FF"> "subtle"</span><span style="color:#FF7B72"> |</span><span style="color:#A5D6FF"> "medium"</span><span style="color:#FF7B72"> |</span><span style="color:#A5D6FF"> "vivid"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#79C0FF"> intensityClass</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">  subtle: </span><span style="color:#A5D6FF">"opacity-25 dark:opacity-20"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">  medium: </span><span style="color:#A5D6FF">"opacity-40 dark:opacity-30"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">  vivid: </span><span style="color:#A5D6FF">"opacity-60 dark:opacity-45"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">/**</span></span>
+<span class="line"><span style="color:#8B949E"> * Velora's signature animated aurora backdrop. Absolutely positioned —</span></span>
+<span class="line"><span style="color:#8B949E"> * place inside a `relative overflow-hidden` section.</span></span>
+<span class="line"><span style="color:#8B949E"> */</span></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> AuroraBackground</span><span style="color:#E6EDF3">({</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  intensity</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "medium"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FF7B72">  ...</span><span style="color:#FFA657">props</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> AuroraBackgroundProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">      aria-hidden</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"aurora-background"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">        "pointer-events-none absolute inset-0 overflow-hidden"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        intensityClass[intensity],</span></span>
+<span class="line"><span style="color:#E6EDF3">        className</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#FF7B72">      {...</span><span style="color:#E6EDF3">props</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"animate-aurora-1 absolute -top-1/4 left-[10%] size-[44rem] rounded-full bg-brand-from blur-[120px] will-change-transform"</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"animate-aurora-2 absolute top-[5%] right-[5%] size-[38rem] rounded-full bg-brand-via blur-[130px] will-change-transform"</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"animate-aurora-3 absolute -bottom-1/4 left-[35%] size-[40rem] rounded-full bg-brand-to blur-[140px] will-change-transform"</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>6:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$b"}}]
+7:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+8:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+9:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+a:["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]
+e:null

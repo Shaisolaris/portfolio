@@ -1,0 +1,142 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+4:I[99651,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"BlurFade"]
+5:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+d:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+6:T6a7,"use client";
+
+import { motion, useReducedMotion } from "motion/react";
+
+import { cn } from "@/lib/utils";
+
+interface BlurFadeProps {
+  children: React.ReactNode;
+  className?: string;
+  /** Seconds before the animation starts */
+  delay?: number;
+  duration?: number;
+  /** Direction the element enters from */
+  direction?: "up" | "down" | "left" | "right" | "none";
+  /** Distance travelled in px */
+  offset?: number;
+  /** Animate only the first time it enters the viewport */
+  once?: boolean;
+  inView?: boolean;
+}
+
+const axis = { up: "y", down: "y", left: "x", right: "x" } as const;
+const sign = { up: 1, down: -1, left: 1, right: -1 } as const;
+
+export function BlurFade({
+  children,
+  className,
+  delay = 0,
+  duration = 0.5,
+  direction = "up",
+  offset = 16,
+  once = true,
+}: BlurFadeProps) {
+  const reducedMotion = useReducedMotion();
+
+  const hidden =
+    direction === "none"
+      ? { opacity: 0, filter: "blur(6px)" }
+      : {
+          opacity: 0,
+          filter: "blur(6px)",
+          [axis[direction]]: sign[direction] * offset,
+        };
+
+  // Keep `initial` identical on server and client (the server can't know the
+  // motion preference — branching it mismatches on hydration). Under reduced
+  // motion the reveal still happens, just instantly.
+  return (
+    <motion.div
+      data-slot="blur-fade"
+      className={cn(className)}
+      initial={hidden}
+      whileInView={{ opacity: 1, filter: "blur(0px)", x: 0, y: 0 }}
+      viewport={{ once, margin: "0px 0px -10% 0px" }}
+      transition={
+        reducedMotion
+          ? { duration: 0 }
+          : { delay, duration, ease: [0.21, 0.47, 0.32, 0.98] }
+      }
+    >
+      {children}
+    </motion.div>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Blur Fade"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"The workhorse entrance — blur, fade and drift into view."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","0.8 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"0.8 KB gzipped"}],["$","span","Deps: motion/react",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Deps: motion/react"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","div",null,{"className":"flex gap-3","children":[["$","$L4","0",{"delay":0,"once":false,"children":["$","div",null,{"className":"flex size-20 items-center justify-center rounded-xl border bg-card text-sm font-medium","children":[0,"s"]}]}],["$","$L4","0.15",{"delay":0.15,"once":false,"children":["$","div",null,{"className":"flex size-20 items-center justify-center rounded-xl border bg-card text-sm font-medium","children":[0.15,"s"]}]}],["$","$L4","0.3",{"delay":0.3,"once":false,"children":["$","div",null,{"className":"flex size-20 items-center justify-center rounded-xl border bg-card text-sm font-medium","children":[0.3,"s"]}]}]]}]}],["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}],["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/blur-fade.json"}],["$","$L5",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/blur-fade.json","className":"border-white/15 bg-white/5"}]]}],["$","p",null,{"className":"mt-3 text-sm text-muted-foreground","children":["Installs with: ","motion"]}],["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L5",null,{"text":"$6"}]]}],"$L7"]}],["$L8","$L9","$La"],"$Lb"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+c:T2bb2,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#A5D6FF">"use client"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { motion, useReducedMotion } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "motion/react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> BlurFadeProps</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FFA657">  children</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">ReactNode</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Seconds before the animation starts */</span></span>
+<span class="line"><span style="color:#FFA657">  delay</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  duration</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Direction the element enters from */</span></span>
+<span class="line"><span style="color:#FFA657">  direction</span><span style="color:#FF7B72">?:</span><span style="color:#A5D6FF"> "up"</span><span style="color:#FF7B72"> |</span><span style="color:#A5D6FF"> "down"</span><span style="color:#FF7B72"> |</span><span style="color:#A5D6FF"> "left"</span><span style="color:#FF7B72"> |</span><span style="color:#A5D6FF"> "right"</span><span style="color:#FF7B72"> |</span><span style="color:#A5D6FF"> "none"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Distance travelled in px */</span></span>
+<span class="line"><span style="color:#FFA657">  offset</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Animate only the first time it enters the viewport */</span></span>
+<span class="line"><span style="color:#FFA657">  once</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> boolean</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  inView</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> boolean</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#79C0FF"> axis</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> { up: </span><span style="color:#A5D6FF">"y"</span><span style="color:#E6EDF3">, down: </span><span style="color:#A5D6FF">"y"</span><span style="color:#E6EDF3">, left: </span><span style="color:#A5D6FF">"x"</span><span style="color:#E6EDF3">, right: </span><span style="color:#A5D6FF">"x"</span><span style="color:#E6EDF3"> } </span><span style="color:#FF7B72">as</span><span style="color:#FF7B72"> const</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">const</span><span style="color:#79C0FF"> sign</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> { up: </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, down: </span><span style="color:#FF7B72">-</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, left: </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, right: </span><span style="color:#FF7B72">-</span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3"> } </span><span style="color:#FF7B72">as</span><span style="color:#FF7B72"> const</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> BlurFade</span><span style="color:#E6EDF3">({</span></span>
+<span class="line"><span style="color:#FFA657">  children</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  delay</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  duration</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 0.5</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  direction</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "up"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  offset</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 16</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  once</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> true</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> BlurFadeProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> reducedMotion</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useReducedMotion</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> hidden</span><span style="color:#FF7B72"> =</span></span>
+<span class="line"><span style="color:#E6EDF3">    direction </span><span style="color:#FF7B72">===</span><span style="color:#A5D6FF"> "none"</span></span>
+<span class="line"><span style="color:#FF7B72">      ?</span><span style="color:#E6EDF3"> { opacity: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, filter: </span><span style="color:#A5D6FF">"blur(6px)"</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#FF7B72">      :</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">          opacity: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          filter: </span><span style="color:#A5D6FF">"blur(6px)"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">          [axis[direction]]: sign[direction] </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> offset,</span></span>
+<span class="line"><span style="color:#E6EDF3">        };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // Keep `initial` identical on server and client (the server can't know the</span></span>
+<span class="line"><span style="color:#8B949E">  // motion preference — branching it mismatches on hydration). Under reduced</span></span>
+<span class="line"><span style="color:#8B949E">  // motion the reveal still happens, just instantly.</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">motion.div</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"blur-fade"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(className)</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      initial</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">hidden</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      whileInView</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{ opacity: </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, filter: </span><span style="color:#A5D6FF">"blur(0px)"</span><span style="color:#E6EDF3">, x: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, y: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      viewport</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{ once, margin: </span><span style="color:#A5D6FF">"0px 0px -10% 0px"</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      transition</span><span style="color:#FF7B72">={</span></span>
+<span class="line"><span style="color:#E6EDF3">        reducedMotion</span></span>
+<span class="line"><span style="color:#FF7B72">          ?</span><span style="color:#E6EDF3"> { duration: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#FF7B72">          :</span><span style="color:#E6EDF3"> { delay, duration, ease: [</span><span style="color:#79C0FF">0.21</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0.47</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0.32</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">0.98</span><span style="color:#E6EDF3">] }</span></span>
+<span class="line"><span style="color:#FF7B72">      }</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#E6EDF3">children</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">motion.div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>7:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$c"}}]
+8:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+9:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+a:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+b:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

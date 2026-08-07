@@ -1,0 +1,134 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+4:I[95229,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"SpotlightCard"]
+5:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+d:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+6:T65e,"use client";
+
+import { useRef } from "react";
+
+import { cn } from "@/lib/utils";
+
+interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  /** Radius of the spotlight in px */
+  radius?: number;
+  /** Any CSS color for the glow */
+  color?: string;
+}
+
+export function SpotlightCard({
+  children,
+  className,
+  radius = 320,
+  color = "color-mix(in oklab, var(--brand) 14%, transparent)",
+  ...props
+}: SpotlightCardProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--spot-x", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--spot-y", `${e.clientY - rect.top}px`);
+  };
+
+  return (
+    <div
+      ref={ref}
+      data-slot="spotlight-card"
+      onMouseMove={handleMouseMove}
+      className={cn(
+        "group relative overflow-hidden rounded-2xl border bg-card",
+        className
+      )}
+      style={
+        {
+          "--spot-radius": `${radius}px`,
+          "--spot-color": color,
+        } as React.CSSProperties
+      }
+      {...props}
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background:
+            "radial-gradient(var(--spot-radius) circle at var(--spot-x, 50%) var(--spot-y, 50%), var(--spot-color), transparent 65%)",
+        }}
+      />
+      <div className="relative z-10">{children}</div>
+    </div>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Spotlight Card"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"A radial glow that follows the cursor across the card."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","0.8 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"0.8 KB gzipped"}],["$","span","Zero dependencies",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Zero dependencies"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","$L4",null,{"className":"w-full max-w-sm p-8","children":[["$","h3",null,{"className":"font-semibold","children":"Move your cursor here"}],["$","p",null,{"className":"mt-2 text-sm text-muted-foreground","children":"The glow follows the pointer across the card surface."}]]}]}],["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}],["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/spotlight-card.json"}],["$","$L5",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/spotlight-card.json","className":"border-white/15 bg-white/5"}]]}],false,["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L5",null,{"text":"$6"}]]}],"$L7"]}],["$L8","$L9","$La"],"$Lb"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+c:T297b,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#A5D6FF">"use client"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { useRef } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> SpotlightCardProps</span><span style="color:#FF7B72"> extends</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#79C0FF">HTMLAttributes</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLDivElement</span><span style="color:#E6EDF3">> {</span></span>
+<span class="line"><span style="color:#FFA657">  children</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">ReactNode</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Radius of the spotlight in px */</span></span>
+<span class="line"><span style="color:#FFA657">  radius</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Any CSS color for the glow */</span></span>
+<span class="line"><span style="color:#FFA657">  color</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> SpotlightCard</span><span style="color:#E6EDF3">({</span></span>
+<span class="line"><span style="color:#FFA657">  children</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  radius</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 320</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  color</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "color-mix(in oklab, var(--brand) 14%, transparent)"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FF7B72">  ...</span><span style="color:#FFA657">props</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> SpotlightCardProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> ref</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useRef</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLDivElement</span><span style="color:#E6EDF3">>(</span><span style="color:#79C0FF">null</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#D2A8FF"> handleMouseMove</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">e</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">MouseEvent</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLDivElement</span><span style="color:#E6EDF3">>) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> el</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> ref.current;</span></span>
+<span class="line"><span style="color:#FF7B72">    if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">el) </span><span style="color:#FF7B72">return</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> rect</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> el.</span><span style="color:#D2A8FF">getBoundingClientRect</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#E6EDF3">    el.style.</span><span style="color:#D2A8FF">setProperty</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"--spot-x"</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">`${</span><span style="color:#E6EDF3">e</span><span style="color:#A5D6FF">.</span><span style="color:#E6EDF3">clientX</span><span style="color:#FF7B72"> -</span><span style="color:#E6EDF3"> rect</span><span style="color:#A5D6FF">.</span><span style="color:#E6EDF3">left</span><span style="color:#A5D6FF">}px`</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    el.style.</span><span style="color:#D2A8FF">setProperty</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"--spot-y"</span><span style="color:#E6EDF3">, </span><span style="color:#A5D6FF">`${</span><span style="color:#E6EDF3">e</span><span style="color:#A5D6FF">.</span><span style="color:#E6EDF3">clientY</span><span style="color:#FF7B72"> -</span><span style="color:#E6EDF3"> rect</span><span style="color:#A5D6FF">.</span><span style="color:#E6EDF3">top</span><span style="color:#A5D6FF">}px`</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">      ref</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">ref</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"spotlight-card"</span></span>
+<span class="line"><span style="color:#79C0FF">      onMouseMove</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">handleMouseMove</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">        "group relative overflow-hidden rounded-2xl border bg-card"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        className</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      style</span><span style="color:#FF7B72">={</span></span>
+<span class="line"><span style="color:#E6EDF3">        {</span></span>
+<span class="line"><span style="color:#A5D6FF">          "--spot-radius"</span><span style="color:#E6EDF3">: </span><span style="color:#A5D6FF">`${</span><span style="color:#E6EDF3">radius</span><span style="color:#A5D6FF">}px`</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#A5D6FF">          "--spot-color"</span><span style="color:#E6EDF3">: color,</span></span>
+<span class="line"><span style="color:#E6EDF3">        } </span><span style="color:#FF7B72">as</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">CSSProperties</span></span>
+<span class="line"><span style="color:#FF7B72">      }</span></span>
+<span class="line"><span style="color:#FF7B72">      {...</span><span style="color:#E6EDF3">props</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">        aria-hidden</span></span>
+<span class="line"><span style="color:#79C0FF">        className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"</span></span>
+<span class="line"><span style="color:#79C0FF">        style</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{</span></span>
+<span class="line"><span style="color:#E6EDF3">          background:</span></span>
+<span class="line"><span style="color:#A5D6FF">            "radial-gradient(var(--spot-radius) circle at var(--spot-x, 50%) var(--spot-y, 50%), var(--spot-color), transparent 65%)"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">      /></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"relative z-10"</span><span style="color:#E6EDF3">></span><span style="color:#FF7B72">{</span><span style="color:#E6EDF3">children</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3">&#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>7:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$c"}}]
+8:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+9:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+a:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+b:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

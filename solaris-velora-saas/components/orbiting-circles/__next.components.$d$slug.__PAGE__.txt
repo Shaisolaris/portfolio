@@ -1,0 +1,178 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+e:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+11:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+12:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Orbiting Circles"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"Items evenly distributed on rotating orbital rings."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","0.9 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"0.9 KB gzipped"}],["$","span","Zero dependencies",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Zero dependencies"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","div",null,{"className":"relative flex h-64 w-full items-center justify-center","children":[["$","$L3",null,{"iconNode":[["path",{"d":"M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z","key":"1s2grr"}],["path",{"d":"M20 2v4","key":"1rf3ol"}],["path",{"d":"M22 4h-4","key":"gwowj6"}],["circle",{"cx":"4","cy":"20","r":"2","key":"6kqj1y"}]],"className":"lucide-sparkles size-7 text-primary"}],[["$","div",null,{"aria-hidden":true,"className":"pointer-events-none absolute inset-0 flex items-center justify-center","children":["$","div",null,{"className":"rounded-full border border-dashed border-border","style":{"width":160,"height":160}}]}],[["$","div","0",{"data-slot":"orbiting-circle","style":{"--duration":18,"--radius":80,"--angle":0},"className":"animate-orbit absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 transform-gpu items-center justify-center rounded-full","children":["$","div",null,{"className":"flex items-center justify-center","style":{"width":26,"height":26},"children":["$","$L3",null,{"iconNode":[["path",{"d":"M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z","key":"zw3jo"}],["path",{"d":"M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12","key":"1wduqc"}],["path",{"d":"M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17","key":"kqbvx6"}]],"className":"lucide-layers size-4 text-muted-foreground"}]}]}],["$","div","1",{"data-slot":"orbiting-circle","style":{"--duration":18,"--radius":80,"--angle":90},"className":"animate-orbit absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 transform-gpu items-center justify-center rounded-full","children":["$","div",null,{"className":"flex items-center justify-center","style":{"width":26,"height":26},"children":["$","$L3",null,{"iconNode":[["path",{"d":"M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z","key":"e79jfc"}],["circle",{"cx":"13.5","cy":"6.5","r":".5","fill":"currentColor","key":"1okk4w"}],["circle",{"cx":"17.5","cy":"10.5","r":".5","fill":"currentColor","key":"f64h9f"}],["circle",{"cx":"6.5","cy":"12.5","r":".5","fill":"currentColor","key":"qy21gx"}],["circle",{"cx":"8.5","cy":"7.5","r":".5","fill":"currentColor","key":"fotxhn"}]],"className":"lucide-palette size-4 text-muted-foreground"}]}]}],"$L4","$L5"]]]}]}],"$L6","$L7",false,"$L8","$L9"]}],["$La","$Lb","$Lc"],"$Ld"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+4:["$","div","2",{"data-slot":"orbiting-circle","style":{"--duration":18,"--radius":80,"--angle":180},"className":"animate-orbit absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 transform-gpu items-center justify-center rounded-full","children":["$","div",null,{"className":"flex items-center justify-center","style":{"width":26,"height":26},"children":["$","$L3",null,{"iconNode":[["path",{"d":"m12 14 4-4","key":"9kzdfg"}],["path",{"d":"M3.34 19a10 10 0 1 1 17.32 0","key":"19p75a"}]],"className":"lucide-gauge size-4 text-muted-foreground"}]}]}]
+5:["$","div","3",{"data-slot":"orbiting-circle","style":{"--duration":18,"--radius":80,"--angle":270},"className":"animate-orbit absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 transform-gpu items-center justify-center rounded-full","children":["$","div",null,{"className":"flex items-center justify-center","style":{"width":26,"height":26},"children":["$","$L3",null,{"iconNode":[["path",{"d":"M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401","key":"kfwtm"}]],"className":"lucide-moon size-4 text-muted-foreground"}]}]}]
+6:["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}]
+7:["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/orbiting-circles.json"}],["$","$Le",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/orbiting-circles.json","className":"border-white/15 bg-white/5"}]]}]
+f:T891,import { cn } from "@/lib/utils";
+
+interface OrbitingCirclesProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  /** Seconds per revolution */
+  duration?: number;
+  /** Orbit radius in px */
+  radius?: number;
+  reverse?: boolean;
+  /** Show the orbit ring */
+  path?: boolean;
+  /** Diameter of each orbiting item in px */
+  iconSize?: number;
+  speed?: number;
+}
+
+/**
+ * Evenly distributes children around a circular orbit and rotates them.
+ * Place inside a `relative` container; stack multiple instances with
+ * different radii for multi-ring layouts.
+ */
+export function OrbitingCircles({
+  className,
+  children,
+  duration = 20,
+  radius = 160,
+  reverse = false,
+  path = true,
+  iconSize = 32,
+  speed = 1,
+  ...props
+}: OrbitingCirclesProps) {
+  const items = Array.isArray(children) ? children : [children];
+  const calculatedDuration = duration / speed;
+
+  return (
+    <>
+      {path && (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 flex items-center justify-center"
+        >
+          <div
+            className="rounded-full border border-dashed border-border"
+            style={{ width: radius * 2, height: radius * 2 }}
+          />
+        </div>
+      )}
+      {items.map((child, i) => {
+        const angle = (360 / items.length) * i;
+        return (
+          <div
+            key={i}
+            data-slot="orbiting-circle"
+            style={
+              {
+                "--duration": calculatedDuration,
+                "--radius": radius,
+                "--angle": angle,
+              } as React.CSSProperties
+            }
+            className={cn(
+              "animate-orbit absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 transform-gpu items-center justify-center rounded-full",
+              reverse && "[animation-direction:reverse]",
+              className
+            )}
+            {...props}
+          >
+            <div
+              className="flex items-center justify-center"
+              style={{ width: iconSize, height: iconSize }}
+            >
+              {child}
+            </div>
+          </div>
+        );
+      })}
+    </>
+  );
+}
+8:["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$Le",null,{"text":"$f"}]]}]
+10:T313f,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> OrbitingCirclesProps</span><span style="color:#FF7B72"> extends</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#79C0FF">HTMLAttributes</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLDivElement</span><span style="color:#E6EDF3">> {</span></span>
+<span class="line"><span style="color:#FFA657">  children</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">ReactNode</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Seconds per revolution */</span></span>
+<span class="line"><span style="color:#FFA657">  duration</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Orbit radius in px */</span></span>
+<span class="line"><span style="color:#FFA657">  radius</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  reverse</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> boolean</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Show the orbit ring */</span></span>
+<span class="line"><span style="color:#FFA657">  path</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> boolean</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Diameter of each orbiting item in px */</span></span>
+<span class="line"><span style="color:#FFA657">  iconSize</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  speed</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">/**</span></span>
+<span class="line"><span style="color:#8B949E"> * Evenly distributes children around a circular orbit and rotates them.</span></span>
+<span class="line"><span style="color:#8B949E"> * Place inside a `relative` container; stack multiple instances with</span></span>
+<span class="line"><span style="color:#8B949E"> * different radii for multi-ring layouts.</span></span>
+<span class="line"><span style="color:#8B949E"> */</span></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> OrbitingCircles</span><span style="color:#E6EDF3">({</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  children</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  duration</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 20</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  radius</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 160</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  reverse</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> false</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  path</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> true</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  iconSize</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 32</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  speed</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FF7B72">  ...</span><span style="color:#FFA657">props</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> OrbitingCirclesProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> items</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> Array.</span><span style="color:#D2A8FF">isArray</span><span style="color:#E6EDF3">(children) </span><span style="color:#FF7B72">?</span><span style="color:#E6EDF3"> children </span><span style="color:#FF7B72">:</span><span style="color:#E6EDF3"> [children];</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> calculatedDuration</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> duration </span><span style="color:#FF7B72">/</span><span style="color:#E6EDF3"> speed;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;></span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#E6EDF3">path </span><span style="color:#FF7B72">&#x26;&#x26;</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">          aria-hidden</span></span>
+<span class="line"><span style="color:#79C0FF">          className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"pointer-events-none absolute inset-0 flex items-center justify-center"</span></span>
+<span class="line"><span style="color:#E6EDF3">        ></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">            className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"rounded-full border border-dashed border-border"</span></span>
+<span class="line"><span style="color:#79C0FF">            style</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{ width: radius </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 2</span><span style="color:#E6EDF3">, height: radius </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 2</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">          /></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#E6EDF3">items.</span><span style="color:#D2A8FF">map</span><span style="color:#E6EDF3">((</span><span style="color:#FFA657">child</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">i</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        const</span><span style="color:#79C0FF"> angle</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> (</span><span style="color:#79C0FF">360</span><span style="color:#FF7B72"> /</span><span style="color:#E6EDF3"> items.</span><span style="color:#79C0FF">length</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> i;</span></span>
+<span class="line"><span style="color:#FF7B72">        return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">            key</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">i</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">            data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"orbiting-circle"</span></span>
+<span class="line"><span style="color:#79C0FF">            style</span><span style="color:#FF7B72">={</span></span>
+<span class="line"><span style="color:#E6EDF3">              {</span></span>
+<span class="line"><span style="color:#A5D6FF">                "--duration"</span><span style="color:#E6EDF3">: calculatedDuration,</span></span>
+<span class="line"><span style="color:#A5D6FF">                "--radius"</span><span style="color:#E6EDF3">: radius,</span></span>
+<span class="line"><span style="color:#A5D6FF">                "--angle"</span><span style="color:#E6EDF3">: angle,</span></span>
+<span class="line"><span style="color:#E6EDF3">              } </span><span style="color:#FF7B72">as</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">CSSProperties</span></span>
+<span class="line"><span style="color:#FF7B72">            }</span></span>
+<span class="line"><span style="color:#79C0FF">            className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">              "animate-orbit absolute top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 transform-gpu items-center justify-center rounded-full"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">              reverse </span><span style="color:#FF7B72">&#x26;&#x26;</span><span style="color:#A5D6FF"> "[animation-direction:reverse]"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">              className</span></span>
+<span class="line"><span style="color:#E6EDF3">            )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#FF7B72">            {...</span><span style="color:#E6EDF3">props</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">          ></span></span>
+<span class="line"><span style="color:#E6EDF3">            &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">              className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"flex items-center justify-center"</span></span>
+<span class="line"><span style="color:#79C0FF">              style</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{ width: iconSize, height: iconSize }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">            ></span></span>
+<span class="line"><span style="color:#FF7B72">              {</span><span style="color:#E6EDF3">child</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">            &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        );</span></span>
+<span class="line"><span style="color:#E6EDF3">      })</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>9:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$10"}}]
+a:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+b:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+c:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+d:["$","$L11",null,{"children":["$","$12",null,{"name":"Next.MetadataOutlet","children":"$@13"}]}]
+13:null

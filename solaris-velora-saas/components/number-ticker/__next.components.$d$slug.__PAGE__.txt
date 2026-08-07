@@ -1,0 +1,168 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+4:I[80901,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"NumberTicker"]
+5:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+d:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+6:T755,"use client";
+
+import { useEffect, useRef } from "react";
+import {
+  useInView,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "motion/react";
+
+import { cn } from "@/lib/utils";
+
+interface NumberTickerProps extends React.HTMLAttributes<HTMLSpanElement> {
+  value: number;
+  startValue?: number;
+  /** Seconds to wait after entering the viewport */
+  delay?: number;
+  decimalPlaces?: number;
+  prefix?: string;
+  suffix?: string;
+}
+
+export function NumberTicker({
+  value,
+  startValue = 0,
+  delay = 0,
+  decimalPlaces = 0,
+  prefix = "",
+  suffix = "",
+  className,
+  ...props
+}: NumberTickerProps) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const motionValue = useMotionValue(startValue);
+  const springValue = useSpring(motionValue, {
+    damping: 60,
+    stiffness: 100,
+  });
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
+  const reducedMotion = useReducedMotion();
+
+  const format = (n: number) =>
+    `${prefix}${Intl.NumberFormat("en-US", {
+      minimumFractionDigits: decimalPlaces,
+      maximumFractionDigits: decimalPlaces,
+    }).format(n)}${suffix}`;
+
+  useEffect(() => {
+    if (!isInView) return;
+    if (reducedMotion) {
+      motionValue.jump(value);
+      return;
+    }
+    const timeout = setTimeout(() => motionValue.set(value), delay * 1000);
+    return () => clearTimeout(timeout);
+  }, [isInView, reducedMotion, motionValue, value, delay]);
+
+  useEffect(
+    () =>
+      springValue.on("change", (latest) => {
+        if (ref.current) ref.current.textContent = format(latest);
+      }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [springValue, prefix, suffix, decimalPlaces]
+  );
+
+  return (
+    <span
+      ref={ref}
+      data-slot="number-ticker"
+      className={cn("inline-block tabular-nums", className)}
+      {...props}
+    >
+      {format(startValue)}
+    </span>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Number Ticker"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"Springs a number up when it enters the viewport."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","0.8 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"0.8 KB gzipped"}],["$","span","Deps: motion/react",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Deps: motion/react"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","p",null,{"className":"text-5xl font-semibold tracking-tight","children":["$","$L4",null,{"value":12480,"suffix":"+"}]}]}],["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}],["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/number-ticker.json"}],["$","$L5",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/number-ticker.json","className":"border-white/15 bg-white/5"}]]}],["$","p",null,{"className":"mt-3 text-sm text-muted-foreground","children":["Installs with: ","motion"]}],["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L5",null,{"text":"$6"}]]}],"$L7"]}],["$L8","$L9","$La"],"$Lb"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+c:T321c,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#A5D6FF">"use client"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { useEffect, useRef } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">  useInView,</span></span>
+<span class="line"><span style="color:#E6EDF3">  useMotionValue,</span></span>
+<span class="line"><span style="color:#E6EDF3">  useReducedMotion,</span></span>
+<span class="line"><span style="color:#E6EDF3">  useSpring,</span></span>
+<span class="line"><span style="color:#E6EDF3">} </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "motion/react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> NumberTickerProps</span><span style="color:#FF7B72"> extends</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#79C0FF">HTMLAttributes</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLSpanElement</span><span style="color:#E6EDF3">> {</span></span>
+<span class="line"><span style="color:#FFA657">  value</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  startValue</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Seconds to wait after entering the viewport */</span></span>
+<span class="line"><span style="color:#FFA657">  delay</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  decimalPlaces</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  prefix</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  suffix</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> NumberTicker</span><span style="color:#E6EDF3">({</span></span>
+<span class="line"><span style="color:#FFA657">  value</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  startValue</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  delay</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  decimalPlaces</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  prefix</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> ""</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  suffix</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> ""</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FF7B72">  ...</span><span style="color:#FFA657">props</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> NumberTickerProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> ref</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useRef</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLSpanElement</span><span style="color:#E6EDF3">>(</span><span style="color:#79C0FF">null</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> motionValue</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useMotionValue</span><span style="color:#E6EDF3">(startValue);</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> springValue</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useSpring</span><span style="color:#E6EDF3">(motionValue, {</span></span>
+<span class="line"><span style="color:#E6EDF3">    damping: </span><span style="color:#79C0FF">60</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    stiffness: </span><span style="color:#79C0FF">100</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">  });</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> isInView</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useInView</span><span style="color:#E6EDF3">(ref, { once: </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3">, margin: </span><span style="color:#A5D6FF">"0px 0px -10% 0px"</span><span style="color:#E6EDF3"> });</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> reducedMotion</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useReducedMotion</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#D2A8FF"> format</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">n</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span></span>
+<span class="line"><span style="color:#A5D6FF">    `${</span><span style="color:#E6EDF3">prefix</span><span style="color:#A5D6FF">}${</span><span style="color:#E6EDF3">Intl</span><span style="color:#A5D6FF">.</span><span style="color:#D2A8FF">NumberFormat</span><span style="color:#A5D6FF">(</span><span style="color:#A5D6FF">"en-US"</span><span style="color:#A5D6FF">, {</span></span>
+<span class="line"><span style="color:#E6EDF3">      minimumFractionDigits: decimalPlaces</span><span style="color:#A5D6FF">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      maximumFractionDigits: decimalPlaces</span><span style="color:#A5D6FF">,</span></span>
+<span class="line"><span style="color:#A5D6FF">    }).</span><span style="color:#D2A8FF">format</span><span style="color:#A5D6FF">(</span><span style="color:#E6EDF3">n</span><span style="color:#A5D6FF">)</span><span style="color:#A5D6FF">}${</span><span style="color:#E6EDF3">suffix</span><span style="color:#A5D6FF">}`</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">  useEffect</span><span style="color:#E6EDF3">(() </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">isInView) </span><span style="color:#FF7B72">return</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    if</span><span style="color:#E6EDF3"> (reducedMotion) {</span></span>
+<span class="line"><span style="color:#E6EDF3">      motionValue.</span><span style="color:#D2A8FF">jump</span><span style="color:#E6EDF3">(value);</span></span>
+<span class="line"><span style="color:#FF7B72">      return</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    }</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> timeout</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> setTimeout</span><span style="color:#E6EDF3">(() </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> motionValue.</span><span style="color:#D2A8FF">set</span><span style="color:#E6EDF3">(value), delay </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 1000</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> () </span><span style="color:#FF7B72">=></span><span style="color:#D2A8FF"> clearTimeout</span><span style="color:#E6EDF3">(timeout);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }, [isInView, reducedMotion, motionValue, value, delay]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">  useEffect</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#E6EDF3">    () </span><span style="color:#FF7B72">=></span></span>
+<span class="line"><span style="color:#E6EDF3">      springValue.</span><span style="color:#D2A8FF">on</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"change"</span><span style="color:#E6EDF3">, (</span><span style="color:#FFA657">latest</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">        if</span><span style="color:#E6EDF3"> (ref.current) ref.current.textContent </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> format</span><span style="color:#E6EDF3">(latest);</span></span>
+<span class="line"><span style="color:#E6EDF3">      }),</span></span>
+<span class="line"><span style="color:#8B949E">    // eslint-disable-next-line react-hooks/exhaustive-deps</span></span>
+<span class="line"><span style="color:#E6EDF3">    [springValue, prefix, suffix, decimalPlaces]</span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">span</span></span>
+<span class="line"><span style="color:#79C0FF">      ref</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">ref</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"number-ticker"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"inline-block tabular-nums"</span><span style="color:#E6EDF3">, className)</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#FF7B72">      {...</span><span style="color:#E6EDF3">props</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#D2A8FF">format</span><span style="color:#E6EDF3">(startValue)</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">span</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>7:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$c"}}]
+8:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+9:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+a:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+b:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

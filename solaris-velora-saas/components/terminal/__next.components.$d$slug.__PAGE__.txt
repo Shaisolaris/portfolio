@@ -1,0 +1,208 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+4:I[59737,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"Terminal"]
+5:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+d:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+6:Tbb9,"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { useInView, useReducedMotion } from "motion/react";
+
+import { cn } from "@/lib/utils";
+
+interface TerminalProps {
+  /** Lines to type. Prefix with "$ " to render a prompt-colored command. */
+  lines: string[];
+  title?: string;
+  /** ms per character */
+  speed?: number;
+  className?: string;
+}
+
+/**
+ * A terminal window that types its lines when scrolled into view.
+ */
+export function Terminal({
+  lines,
+  title = "bash",
+  speed = 18,
+  className,
+}: TerminalProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "0px 0px -15% 0px" });
+  const reducedMotion = useReducedMotion();
+  const [progress, setProgress] = useState({ line: 0, char: 0 });
+
+  const done =
+    reducedMotion ||
+    (progress.line >= lines.length - 1 &&
+      progress.char >= (lines[lines.length - 1]?.length ?? 0));
+
+  useEffect(() => {
+    if (!inView || reducedMotion || done) return;
+    const current = lines[progress.line] ?? "";
+    const timeout = setTimeout(
+      () =>
+        setProgress((p) =>
+          p.char < current.length
+            ? { ...p, char: p.char + 1 }
+            : { line: p.line + 1, char: 0 }
+        ),
+      progress.char === 0 ? 260 : speed
+    );
+    return () => clearTimeout(timeout);
+  }, [inView, reducedMotion, done, progress, lines, speed]);
+
+  const visibleLines = reducedMotion
+    ? lines
+    : lines
+        .slice(0, progress.line + 1)
+        .map((l, i) => (i === progress.line ? l.slice(0, progress.char) : l));
+
+  return (
+    <div
+      ref={ref}
+      data-slot="terminal"
+      className={cn(
+        "w-full overflow-hidden rounded-xl border bg-neutral-950 font-mono text-sm shadow-xl",
+        className
+      )}
+    >
+      <div className="flex items-center gap-3 border-b border-white/10 px-4 py-2.5">
+        <div className="flex gap-1.5">
+          <span className="size-3 rounded-full bg-red-500/80" />
+          <span className="size-3 rounded-full bg-yellow-500/80" />
+          <span className="size-3 rounded-full bg-green-500/80" />
+        </div>
+        <span className="text-xs text-neutral-500">{title}</span>
+      </div>
+      <div className="min-h-32 space-y-1.5 p-4 text-neutral-300">
+        {visibleLines.map((line, i) => {
+          const isCommand = lines[i]?.startsWith("$ ");
+          const isLast = i === visibleLines.length - 1;
+          return (
+            <p key={i} className="leading-relaxed">
+              {isCommand ? (
+                <>
+                  <span className="text-emerald-400">$ </span>
+                  <span className="text-neutral-100">{line.slice(2)}</span>
+                </>
+              ) : (
+                <span className="text-neutral-400">{line}</span>
+              )}
+              {isLast && !done && (
+                <span className="animate-pulse text-neutral-100">▍</span>
+              )}
+            </p>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Terminal"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"A terminal window that types its lines in view."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","1.2 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"1.2 KB gzipped"}],["$","span","Deps: motion/react",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Deps: motion/react"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","$L4",null,{"className":"max-w-md","lines":["$$ npx shadcn@latest add velora/marquee","✔ Checking registry…","✔ Installing dependencies…","✔ Created components/velora/marquee.tsx"]}]}],["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}],["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/terminal.json"}],["$","$L5",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/terminal.json","className":"border-white/15 bg-white/5"}]]}],["$","p",null,{"className":"mt-3 text-sm text-muted-foreground","children":["Installs with: ","motion"]}],["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L5",null,{"text":"$6"}]]}],"$L7"]}],["$L8","$L9","$La"],"$Lb"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+c:T4f85,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#A5D6FF">"use client"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { useEffect, useRef, useState } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { useInView, useReducedMotion } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "motion/react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> TerminalProps</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#8B949E">  /** Lines to type. Prefix with "$ " to render a prompt-colored command. */</span></span>
+<span class="line"><span style="color:#FFA657">  lines</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">[];</span></span>
+<span class="line"><span style="color:#FFA657">  title</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** ms per character */</span></span>
+<span class="line"><span style="color:#FFA657">  speed</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">/**</span></span>
+<span class="line"><span style="color:#8B949E"> * A terminal window that types its lines when scrolled into view.</span></span>
+<span class="line"><span style="color:#8B949E"> */</span></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> Terminal</span><span style="color:#E6EDF3">({</span></span>
+<span class="line"><span style="color:#FFA657">  lines</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  title</span><span style="color:#FF7B72"> =</span><span style="color:#A5D6FF"> "bash"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  speed</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 18</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> TerminalProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> ref</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useRef</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLDivElement</span><span style="color:#E6EDF3">>(</span><span style="color:#79C0FF">null</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> inView</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useInView</span><span style="color:#E6EDF3">(ref, { once: </span><span style="color:#79C0FF">true</span><span style="color:#E6EDF3">, margin: </span><span style="color:#A5D6FF">"0px 0px -15% 0px"</span><span style="color:#E6EDF3"> });</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> reducedMotion</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useReducedMotion</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#E6EDF3"> [</span><span style="color:#79C0FF">progress</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">setProgress</span><span style="color:#E6EDF3">] </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> useState</span><span style="color:#E6EDF3">({ line: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, char: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> done</span><span style="color:#FF7B72"> =</span></span>
+<span class="line"><span style="color:#E6EDF3">    reducedMotion </span><span style="color:#FF7B72">||</span></span>
+<span class="line"><span style="color:#E6EDF3">    (progress.line </span><span style="color:#FF7B72">>=</span><span style="color:#E6EDF3"> lines.</span><span style="color:#79C0FF">length</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF"> 1</span><span style="color:#FF7B72"> &#x26;&#x26;</span></span>
+<span class="line"><span style="color:#E6EDF3">      progress.char </span><span style="color:#FF7B72">>=</span><span style="color:#E6EDF3"> (lines[lines.</span><span style="color:#79C0FF">length</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">]?.</span><span style="color:#79C0FF">length</span><span style="color:#FF7B72"> ??</span><span style="color:#79C0FF"> 0</span><span style="color:#E6EDF3">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">  useEffect</span><span style="color:#E6EDF3">(() </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">inView </span><span style="color:#FF7B72">||</span><span style="color:#E6EDF3"> reducedMotion </span><span style="color:#FF7B72">||</span><span style="color:#E6EDF3"> done) </span><span style="color:#FF7B72">return</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> current</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> lines[progress.line] </span><span style="color:#FF7B72">??</span><span style="color:#A5D6FF"> ""</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> timeout</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> setTimeout</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#E6EDF3">      () </span><span style="color:#FF7B72">=></span></span>
+<span class="line"><span style="color:#D2A8FF">        setProgress</span><span style="color:#E6EDF3">((</span><span style="color:#FFA657">p</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span></span>
+<span class="line"><span style="color:#E6EDF3">          p.char </span><span style="color:#FF7B72">&#x3C;</span><span style="color:#E6EDF3"> current.</span><span style="color:#79C0FF">length</span></span>
+<span class="line"><span style="color:#FF7B72">            ?</span><span style="color:#E6EDF3"> { </span><span style="color:#FF7B72">...</span><span style="color:#E6EDF3">p, char: p.char </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#FF7B72">            :</span><span style="color:#E6EDF3"> { line: p.line </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">, char: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3"> }</span></span>
+<span class="line"><span style="color:#E6EDF3">        ),</span></span>
+<span class="line"><span style="color:#E6EDF3">      progress.char </span><span style="color:#FF7B72">===</span><span style="color:#79C0FF"> 0</span><span style="color:#FF7B72"> ?</span><span style="color:#79C0FF"> 260</span><span style="color:#FF7B72"> :</span><span style="color:#E6EDF3"> speed</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> () </span><span style="color:#FF7B72">=></span><span style="color:#D2A8FF"> clearTimeout</span><span style="color:#E6EDF3">(timeout);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }, [inView, reducedMotion, done, progress, lines, speed]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> visibleLines</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> reducedMotion</span></span>
+<span class="line"><span style="color:#FF7B72">    ?</span><span style="color:#E6EDF3"> lines</span></span>
+<span class="line"><span style="color:#FF7B72">    :</span><span style="color:#E6EDF3"> lines</span></span>
+<span class="line"><span style="color:#E6EDF3">        .</span><span style="color:#D2A8FF">slice</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, progress.line </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">)</span></span>
+<span class="line"><span style="color:#E6EDF3">        .</span><span style="color:#D2A8FF">map</span><span style="color:#E6EDF3">((</span><span style="color:#FFA657">l</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">i</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> (i </span><span style="color:#FF7B72">===</span><span style="color:#E6EDF3"> progress.line </span><span style="color:#FF7B72">?</span><span style="color:#E6EDF3"> l.</span><span style="color:#D2A8FF">slice</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, progress.char) </span><span style="color:#FF7B72">:</span><span style="color:#E6EDF3"> l));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">      ref</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">ref</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"terminal"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">        "w-full overflow-hidden rounded-xl border bg-neutral-950 font-mono text-sm shadow-xl"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">        className</span></span>
+<span class="line"><span style="color:#E6EDF3">      )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"flex items-center gap-3 border-b border-white/10 px-4 py-2.5"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"flex gap-1.5"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"size-3 rounded-full bg-red-500/80"</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"size-3 rounded-full bg-yellow-500/80"</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">          &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"size-3 rounded-full bg-green-500/80"</span><span style="color:#E6EDF3"> /></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"text-xs text-neutral-500"</span><span style="color:#E6EDF3">></span><span style="color:#FF7B72">{</span><span style="color:#E6EDF3">title</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3">&#x3C;/</span><span style="color:#7EE787">span</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">div</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"min-h-32 space-y-1.5 p-4 text-neutral-300"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">        {</span><span style="color:#E6EDF3">visibleLines.</span><span style="color:#D2A8FF">map</span><span style="color:#E6EDF3">((</span><span style="color:#FFA657">line</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">i</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">          const</span><span style="color:#79C0FF"> isCommand</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> lines[i]?.</span><span style="color:#D2A8FF">startsWith</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"$ "</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">          const</span><span style="color:#79C0FF"> isLast</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> i </span><span style="color:#FF7B72">===</span><span style="color:#E6EDF3"> visibleLines.</span><span style="color:#79C0FF">length</span><span style="color:#FF7B72"> -</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">          return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">            &#x3C;</span><span style="color:#7EE787">p</span><span style="color:#79C0FF"> key</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">i</span><span style="color:#FF7B72">}</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"leading-relaxed"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">              {</span><span style="color:#E6EDF3">isCommand </span><span style="color:#FF7B72">?</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">                &#x3C;></span></span>
+<span class="line"><span style="color:#E6EDF3">                  &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"text-emerald-400"</span><span style="color:#E6EDF3">>$ &#x3C;/</span><span style="color:#7EE787">span</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">                  &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"text-neutral-100"</span><span style="color:#E6EDF3">></span><span style="color:#FF7B72">{</span><span style="color:#E6EDF3">line.</span><span style="color:#D2A8FF">slice</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">2</span><span style="color:#E6EDF3">)</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3">&#x3C;/</span><span style="color:#7EE787">span</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">                &#x3C;/></span></span>
+<span class="line"><span style="color:#E6EDF3">              ) </span><span style="color:#FF7B72">:</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">                &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"text-neutral-400"</span><span style="color:#E6EDF3">></span><span style="color:#FF7B72">{</span><span style="color:#E6EDF3">line</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3">&#x3C;/</span><span style="color:#7EE787">span</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">              )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#FF7B72">              {</span><span style="color:#E6EDF3">isLast </span><span style="color:#FF7B72">&#x26;&#x26;</span><span style="color:#FF7B72"> !</span><span style="color:#E6EDF3">done </span><span style="color:#FF7B72">&#x26;&#x26;</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">                &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"animate-pulse text-neutral-100"</span><span style="color:#E6EDF3">>▍&#x3C;/</span><span style="color:#7EE787">span</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">              )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">            &#x3C;/</span><span style="color:#7EE787">p</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">          );</span></span>
+<span class="line"><span style="color:#E6EDF3">        })</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>7:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$c"}}]
+8:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+9:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+a:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+b:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

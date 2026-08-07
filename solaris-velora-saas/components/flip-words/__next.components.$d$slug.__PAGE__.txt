@@ -1,0 +1,136 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+4:I[73466,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"FlipWords"]
+5:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+d:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+6:T71d,"use client";
+
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+
+import { cn } from "@/lib/utils";
+
+interface FlipWordsProps {
+  words: string[];
+  /** ms each word stays on screen */
+  duration?: number;
+  className?: string;
+}
+
+/**
+ * Cycles through words with a blur-flip transition.
+ */
+export function FlipWords({ words, duration = 2600, className }: FlipWordsProps) {
+  const [index, setIndex] = useState(0);
+  const reducedMotion = useReducedMotion();
+
+  useEffect(() => {
+    if (reducedMotion) return;
+    const interval = setInterval(
+      () => setIndex((i) => (i + 1) % words.length),
+      duration
+    );
+    return () => clearInterval(interval);
+  }, [words.length, duration, reducedMotion]);
+
+  if (reducedMotion) {
+    return <span className={cn(className)}>{words[0]}</span>;
+  }
+
+  const longest = words.reduce((a, b) => (b.length > a.length ? b : a), "");
+
+  // The invisible longest word reserves the cell size so flipping
+  // between words never shifts surrounding layout.
+  return (
+    <span
+      data-slot="flip-words"
+      className={cn("inline-grid text-left align-bottom", className)}
+    >
+      <span aria-hidden className="invisible col-start-1 row-start-1">
+        {longest}
+      </span>
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.span
+          key={words[index]}
+          initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          exit={{ opacity: 0, y: -14, filter: "blur(6px)" }}
+          transition={{ type: "spring", stiffness: 240, damping: 26 }}
+          className="col-start-1 row-start-1 inline-block"
+        >
+          {words[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Flip Words"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"Cycles words with a springy blur-flip transition."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","0.8 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"0.8 KB gzipped"}],["$","span","Deps: motion/react",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Deps: motion/react"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","p",null,{"className":"text-2xl font-semibold","children":["Make it ",["$","$L4",null,{"words":["modern","animated","accessible"],"className":"text-primary"}]]}]}],["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}],["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/flip-words.json"}],["$","$L5",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/flip-words.json","className":"border-white/15 bg-white/5"}]]}],["$","p",null,{"className":"mt-3 text-sm text-muted-foreground","children":["Installs with: ","motion"]}],["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L5",null,{"text":"$6"}]]}],"$L7"]}],["$L8","$L9","$La"],"$Lb"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+c:T30a8,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#A5D6FF">"use client"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { useEffect, useState } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { AnimatePresence, motion, useReducedMotion } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "motion/react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> FlipWordsProps</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FFA657">  words</span><span style="color:#FF7B72">:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">[];</span></span>
+<span class="line"><span style="color:#8B949E">  /** ms each word stays on screen */</span></span>
+<span class="line"><span style="color:#FFA657">  duration</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">/**</span></span>
+<span class="line"><span style="color:#8B949E"> * Cycles through words with a blur-flip transition.</span></span>
+<span class="line"><span style="color:#8B949E"> */</span></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> FlipWords</span><span style="color:#E6EDF3">({ </span><span style="color:#FFA657">words</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">duration</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 2600</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">className</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> FlipWordsProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#E6EDF3"> [</span><span style="color:#79C0FF">index</span><span style="color:#E6EDF3">, </span><span style="color:#79C0FF">setIndex</span><span style="color:#E6EDF3">] </span><span style="color:#FF7B72">=</span><span style="color:#D2A8FF"> useState</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> reducedMotion</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useReducedMotion</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#D2A8FF">  useEffect</span><span style="color:#E6EDF3">(() </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    if</span><span style="color:#E6EDF3"> (reducedMotion) </span><span style="color:#FF7B72">return</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> interval</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> setInterval</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#E6EDF3">      () </span><span style="color:#FF7B72">=></span><span style="color:#D2A8FF"> setIndex</span><span style="color:#E6EDF3">((</span><span style="color:#FFA657">i</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> (i </span><span style="color:#FF7B72">+</span><span style="color:#79C0FF"> 1</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">%</span><span style="color:#E6EDF3"> words.</span><span style="color:#79C0FF">length</span><span style="color:#E6EDF3">),</span></span>
+<span class="line"><span style="color:#E6EDF3">      duration</span></span>
+<span class="line"><span style="color:#E6EDF3">    );</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> () </span><span style="color:#FF7B72">=></span><span style="color:#D2A8FF"> clearInterval</span><span style="color:#E6EDF3">(interval);</span></span>
+<span class="line"><span style="color:#E6EDF3">  }, [words.</span><span style="color:#79C0FF">length</span><span style="color:#E6EDF3">, duration, reducedMotion]);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  if</span><span style="color:#E6EDF3"> (reducedMotion) {</span></span>
+<span class="line"><span style="color:#FF7B72">    return</span><span style="color:#E6EDF3"> &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(className)</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3">></span><span style="color:#FF7B72">{</span><span style="color:#E6EDF3">words[</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">]</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3">&#x3C;/</span><span style="color:#7EE787">span</span><span style="color:#E6EDF3">>;</span></span>
+<span class="line"><span style="color:#E6EDF3">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> longest</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> words.</span><span style="color:#D2A8FF">reduce</span><span style="color:#E6EDF3">((</span><span style="color:#FFA657">a</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">b</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> (b.</span><span style="color:#79C0FF">length</span><span style="color:#FF7B72"> ></span><span style="color:#E6EDF3"> a.</span><span style="color:#79C0FF">length</span><span style="color:#FF7B72"> ?</span><span style="color:#E6EDF3"> b </span><span style="color:#FF7B72">:</span><span style="color:#E6EDF3"> a), </span><span style="color:#A5D6FF">""</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">  // The invisible longest word reserves the cell size so flipping</span></span>
+<span class="line"><span style="color:#8B949E">  // between words never shifts surrounding layout.</span></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">span</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"flip-words"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"inline-grid text-left align-bottom"</span><span style="color:#E6EDF3">, className)</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">span</span><span style="color:#79C0FF"> aria-hidden</span><span style="color:#79C0FF"> className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"invisible col-start-1 row-start-1"</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#FF7B72">        {</span><span style="color:#E6EDF3">longest</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;/</span><span style="color:#7EE787">span</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;</span><span style="color:#7EE787">AnimatePresence</span><span style="color:#79C0FF"> mode</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"popLayout"</span><span style="color:#79C0FF"> initial</span><span style="color:#FF7B72">={</span><span style="color:#79C0FF">false</span><span style="color:#FF7B72">}</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">motion.span</span></span>
+<span class="line"><span style="color:#79C0FF">          key</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">words[index]</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          initial</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{ opacity: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, y: </span><span style="color:#79C0FF">14</span><span style="color:#E6EDF3">, filter: </span><span style="color:#A5D6FF">"blur(6px)"</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          animate</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{ opacity: </span><span style="color:#79C0FF">1</span><span style="color:#E6EDF3">, y: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, filter: </span><span style="color:#A5D6FF">"blur(0px)"</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          exit</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{ opacity: </span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">, y: </span><span style="color:#FF7B72">-</span><span style="color:#79C0FF">14</span><span style="color:#E6EDF3">, filter: </span><span style="color:#A5D6FF">"blur(6px)"</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          transition</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{ type: </span><span style="color:#A5D6FF">"spring"</span><span style="color:#E6EDF3">, stiffness: </span><span style="color:#79C0FF">240</span><span style="color:#E6EDF3">, damping: </span><span style="color:#79C0FF">26</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"col-start-1 row-start-1 inline-block"</span></span>
+<span class="line"><span style="color:#E6EDF3">        ></span></span>
+<span class="line"><span style="color:#FF7B72">          {</span><span style="color:#E6EDF3">words[index]</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;/</span><span style="color:#7EE787">motion.span</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">      &#x3C;/</span><span style="color:#7EE787">AnimatePresence</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">span</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>7:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$c"}}]
+8:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+9:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+a:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+b:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

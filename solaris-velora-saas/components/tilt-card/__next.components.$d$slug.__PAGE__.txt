@@ -1,0 +1,140 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+4:I[75681,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"TiltCard"]
+5:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+d:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+e:"$Sreact.suspense"
+6:T61e,"use client";
+
+import { useRef } from "react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "motion/react";
+
+import { cn } from "@/lib/utils";
+
+interface TiltCardProps {
+  children: React.ReactNode;
+  className?: string;
+  /** Maximum tilt in degrees */
+  maxTilt?: number;
+}
+
+/**
+ * 3D perspective tilt that follows the cursor.
+ */
+export function TiltCard({ children, className, maxTilt = 8 }: TiltCardProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
+
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const springX = useSpring(rotateX, { stiffness: 220, damping: 18 });
+  const springY = useSpring(rotateY, { stiffness: 220, damping: 18 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (reducedMotion) return;
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    rotateY.set(px * maxTilt * 2);
+    rotateX.set(-py * maxTilt * 2);
+  };
+
+  const handleMouseLeave = () => {
+    rotateX.set(0);
+    rotateY.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      data-slot="tilt-card"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX: springX,
+        rotateY: springY,
+        transformPerspective: 800,
+      }}
+      className={cn("will-change-transform", className)}
+    >
+      {children}
+    </motion.div>
+  );
+}
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Tilt Card"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"3D perspective tilt that tracks the cursor."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","0.7 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"0.7 KB gzipped"}],["$","span","Deps: motion/react",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Deps: motion/react"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","$L4",null,{"className":"w-full max-w-sm","children":["$","div",null,{"className":"rounded-2xl border bg-card p-8","children":[["$","h3",null,{"className":"font-semibold","children":"Tilt me"}],["$","p",null,{"className":"mt-2 text-sm text-muted-foreground","children":"3D perspective that tracks your cursor."}]]}]}]}],["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}],["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/tilt-card.json"}],["$","$L5",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/tilt-card.json","className":"border-white/15 bg-white/5"}]]}],["$","p",null,{"className":"mt-3 text-sm text-muted-foreground","children":["Installs with: ","motion"]}],["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L5",null,{"text":"$6"}]]}],"$L7"]}],["$L8","$L9","$La"],"$Lb"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+c:T2db2,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#A5D6FF">"use client"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { useRef } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">  motion,</span></span>
+<span class="line"><span style="color:#E6EDF3">  useMotionValue,</span></span>
+<span class="line"><span style="color:#E6EDF3">  useReducedMotion,</span></span>
+<span class="line"><span style="color:#E6EDF3">  useSpring,</span></span>
+<span class="line"><span style="color:#E6EDF3">} </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "motion/react"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> TiltCardProps</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FFA657">  children</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">ReactNode</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#8B949E">  /** Maximum tilt in degrees */</span></span>
+<span class="line"><span style="color:#FFA657">  maxTilt</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">/**</span></span>
+<span class="line"><span style="color:#8B949E"> * 3D perspective tilt that follows the cursor.</span></span>
+<span class="line"><span style="color:#8B949E"> */</span></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> TiltCard</span><span style="color:#E6EDF3">({ </span><span style="color:#FFA657">children</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">className</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">maxTilt</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 8</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> TiltCardProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> ref</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useRef</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLDivElement</span><span style="color:#E6EDF3">>(</span><span style="color:#79C0FF">null</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> reducedMotion</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useReducedMotion</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> rotateX</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useMotionValue</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> rotateY</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useMotionValue</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> springX</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useSpring</span><span style="color:#E6EDF3">(rotateX, { stiffness: </span><span style="color:#79C0FF">220</span><span style="color:#E6EDF3">, damping: </span><span style="color:#79C0FF">18</span><span style="color:#E6EDF3"> });</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> springY</span><span style="color:#FF7B72"> =</span><span style="color:#D2A8FF"> useSpring</span><span style="color:#E6EDF3">(rotateY, { stiffness: </span><span style="color:#79C0FF">220</span><span style="color:#E6EDF3">, damping: </span><span style="color:#79C0FF">18</span><span style="color:#E6EDF3"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#D2A8FF"> handleMouseMove</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> (</span><span style="color:#FFA657">e</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> React</span><span style="color:#E6EDF3">.</span><span style="color:#FFA657">MouseEvent</span><span style="color:#E6EDF3">&#x3C;</span><span style="color:#FFA657">HTMLDivElement</span><span style="color:#E6EDF3">>) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FF7B72">    if</span><span style="color:#E6EDF3"> (reducedMotion) </span><span style="color:#FF7B72">return</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> rect</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> ref.current?.</span><span style="color:#D2A8FF">getBoundingClientRect</span><span style="color:#E6EDF3">();</span></span>
+<span class="line"><span style="color:#FF7B72">    if</span><span style="color:#E6EDF3"> (</span><span style="color:#FF7B72">!</span><span style="color:#E6EDF3">rect) </span><span style="color:#FF7B72">return</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> px</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> (e.clientX </span><span style="color:#FF7B72">-</span><span style="color:#E6EDF3"> rect.left) </span><span style="color:#FF7B72">/</span><span style="color:#E6EDF3"> rect.width </span><span style="color:#FF7B72">-</span><span style="color:#79C0FF"> 0.5</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FF7B72">    const</span><span style="color:#79C0FF"> py</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> (e.clientY </span><span style="color:#FF7B72">-</span><span style="color:#E6EDF3"> rect.top) </span><span style="color:#FF7B72">/</span><span style="color:#E6EDF3"> rect.height </span><span style="color:#FF7B72">-</span><span style="color:#79C0FF"> 0.5</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">    rotateY.</span><span style="color:#D2A8FF">set</span><span style="color:#E6EDF3">(px </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> maxTilt </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 2</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    rotateX.</span><span style="color:#D2A8FF">set</span><span style="color:#E6EDF3">(</span><span style="color:#FF7B72">-</span><span style="color:#E6EDF3">py </span><span style="color:#FF7B72">*</span><span style="color:#E6EDF3"> maxTilt </span><span style="color:#FF7B72">*</span><span style="color:#79C0FF"> 2</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#D2A8FF"> handleMouseLeave</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> () </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#E6EDF3">    rotateX.</span><span style="color:#D2A8FF">set</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">    rotateY.</span><span style="color:#D2A8FF">set</span><span style="color:#E6EDF3">(</span><span style="color:#79C0FF">0</span><span style="color:#E6EDF3">);</span></span>
+<span class="line"><span style="color:#E6EDF3">  };</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">motion.div</span></span>
+<span class="line"><span style="color:#79C0FF">      ref</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">ref</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"tilt-card"</span></span>
+<span class="line"><span style="color:#79C0FF">      onMouseMove</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">handleMouseMove</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      onMouseLeave</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">handleMouseLeave</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      style</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{</span></span>
+<span class="line"><span style="color:#E6EDF3">        rotateX: springX,</span></span>
+<span class="line"><span style="color:#E6EDF3">        rotateY: springY,</span></span>
+<span class="line"><span style="color:#E6EDF3">        transformPerspective: </span><span style="color:#79C0FF">800</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">      }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span><span style="color:#A5D6FF">"will-change-transform"</span><span style="color:#E6EDF3">, className)</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#E6EDF3">children</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">motion.div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>7:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$c"}}]
+8:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+9:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+a:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+b:["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]
+f:null

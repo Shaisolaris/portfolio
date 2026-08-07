@@ -1,0 +1,111 @@
+1:"$Sreact.fragment"
+2:I[22016,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],""]
+3:I[5014,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"default"]
+13:I[58832,["/portfolio/solaris-velora-saas/_next/static/chunks/1bmgt7asrrdlg.js","/portfolio/solaris-velora-saas/_next/static/chunks/3xyxtfhvuj10a.js","/portfolio/solaris-velora-saas/_next/static/chunks/40z_c4-8g_-kl.js","/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js"],"CopyButton"]
+16:I[97367,["/portfolio/solaris-velora-saas/_next/static/chunks/05-c3ty_6dwfk.js","/portfolio/solaris-velora-saas/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","article",null,{"children":[["$","$L2",null,{"href":"/components","className":"mb-6 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground","children":[["$","$L3",null,{"iconNode":[["path",{"d":"m15 18-6-6 6-6","key":"1wnfg3"}]],"className":"lucide-chevron-left size-4"}],"All components"]}],["$","h1",null,{"className":"text-3xl font-semibold tracking-tight","children":"Meteors"}],["$","p",null,{"className":"mt-2 max-w-2xl text-muted-foreground","children":"Falling meteor streaks for dark hero and CTA sections."}],["$","div",null,{"className":"mt-5 flex flex-wrap gap-2","children":[["$","span","0.6 KB gzipped",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"0.6 KB gzipped"}],["$","span","Zero dependencies",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Zero dependencies"}],["$","span","Reduced-motion safe",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Reduced-motion safe"}],["$","span","Base UI & Radix compatible",{"className":"rounded-full border border-border/60 bg-card px-3 py-1 text-xs font-medium text-muted-foreground","children":"Base UI & Radix compatible"}]]}],["$","div",null,{"className":"relative mt-8 flex min-h-80 items-center justify-center overflow-hidden rounded-2xl border bg-background p-8","children":["$","div",null,{"className":"relative flex h-full min-h-64 w-full items-center justify-center overflow-hidden rounded-lg bg-neutral-950 text-white","children":[["$","div",null,{"aria-hidden":true,"data-slot":"meteors","className":"pointer-events-none absolute inset-0 overflow-hidden","children":[["$","span","0",{"className":"animate-meteor absolute size-0.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:to-transparent bg-white/70 before:from-white/60","style":{"left":"11%","top":"0%","animationDelay":"0s","animationDuration":"4s"}}],["$","span","1",{"className":"animate-meteor absolute size-0.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:to-transparent bg-white/70 before:from-white/60","style":{"left":"48%","top":"17%","animationDelay":"5.3s","animationDuration":"6.9s"}}],["$","span","2",{"className":"animate-meteor absolute size-0.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:to-transparent bg-white/70 before:from-white/60","style":{"left":"85%","top":"34%","animationDelay":"3.6s","animationDuration":"6.3s"}}],["$","span","3",{"className":"animate-meteor absolute size-0.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:to-transparent bg-white/70 before:from-white/60","style":{"left":"22%","top":"11%","animationDelay":"1.9s","animationDuration":"5.7s"}}],["$","span","4",{"className":"animate-meteor absolute size-0.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:to-transparent bg-white/70 before:from-white/60","style":{"left":"59%","top":"28%","animationDelay":"0.2s","animationDuration":"5.1s"}}],["$","span","5",{"className":"animate-meteor absolute size-0.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:to-transparent bg-white/70 before:from-white/60","style":{"left":"96%","top":"5%","animationDelay":"5.5s","animationDuration":"4.5s"}}],"$L4","$L5","$L6","$L7","$L8","$L9"]}],"$La"]}]}],"$Lb","$Lc",false,"$Ld","$Le"]}],["$Lf","$L10","$L11"],"$L12"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YGNxsYrmsIYtGu8FFDROM"}
+4:["$","span","6",{"className":"animate-meteor absolute size-0.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:to-transparent bg-white/70 before:from-white/60","style":{"left":"33%","top":"22%","animationDelay":"3.8s","animationDuration":"7.4s"}}]
+5:["$","span","7",{"className":"animate-meteor absolute size-0.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:to-transparent bg-white/70 before:from-white/60","style":{"left":"70%","top":"39%","animationDelay":"2.1s","animationDuration":"6.8s"}}]
+6:["$","span","8",{"className":"animate-meteor absolute size-0.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:to-transparent bg-white/70 before:from-white/60","style":{"left":"7%","top":"16%","animationDelay":"0.4s","animationDuration":"6.2s"}}]
+7:["$","span","9",{"className":"animate-meteor absolute size-0.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:to-transparent bg-white/70 before:from-white/60","style":{"left":"44%","top":"33%","animationDelay":"5.7s","animationDuration":"5.6s"}}]
+8:["$","span","10",{"className":"animate-meteor absolute size-0.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:to-transparent bg-white/70 before:from-white/60","style":{"left":"81%","top":"10%","animationDelay":"4s","animationDuration":"5s"}}]
+9:["$","span","11",{"className":"animate-meteor absolute size-0.5 rounded-full shadow-[0_0_0_1px_rgba(255,255,255,0.08)] before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:to-transparent bg-white/70 before:from-white/60","style":{"left":"18%","top":"27%","animationDelay":"2.3s","animationDuration":"4.4s"}}]
+a:["$","p",null,{"className":"relative text-xl font-semibold","children":"Meteors"}]
+b:["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}]
+c:["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/meteors.json"}],["$","$L13",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/meteors.json","className":"border-white/15 bg-white/5"}]]}]
+14:T515,import { cn } from "@/lib/utils";
+
+interface MeteorsProps {
+  number?: number;
+  className?: string;
+}
+
+/**
+ * Falling meteor streaks. Values are derived from the index (not random)
+ * so server and client markup always match.
+ */
+export function Meteors({ number = 12, className }: MeteorsProps) {
+  const meteors = Array.from({ length: number }, (_, i) => ({
+    left: `${(i * 37 + 11) % 100}%`,
+    top: `${(i * 17) % 40}%`,
+    delay: `${((i * 53) % 70) / 10}s`,
+    duration: `${4 + ((i * 29) % 35) / 10}s`,
+  }));
+
+  return (
+    <div
+      aria-hidden
+      data-slot="meteors"
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      {meteors.map((meteor, i) => (
+        <span
+          key={i}
+          className={cn(
+            "animate-meteor absolute size-0.5 rounded-full bg-foreground/70 shadow-[0_0_0_1px_rgba(255,255,255,0.08)]",
+            "before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:from-foreground/60 before:to-transparent",
+            className
+          )}
+          style={{
+            left: meteor.left,
+            top: meteor.top,
+            animationDelay: meteor.delay,
+            animationDuration: meteor.duration,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+d:["$","div",null,{"className":"mt-12 flex items-center justify-between","children":[["$","h2",null,{"className":"text-lg font-semibold","children":"Source"}],["$","$L13",null,{"text":"$14"}]]}]
+15:T1fa3,<pre class="shiki github-dark-default" style="background-color:#0d1117;color:#e6edf3" tabindex="0"><code><span class="line"><span style="color:#FF7B72">import</span><span style="color:#E6EDF3"> { cn } </span><span style="color:#FF7B72">from</span><span style="color:#A5D6FF"> "@/lib/utils"</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">interface</span><span style="color:#FFA657"> MeteorsProps</span><span style="color:#E6EDF3"> {</span></span>
+<span class="line"><span style="color:#FFA657">  number</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> number</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#FFA657">  className</span><span style="color:#FF7B72">?:</span><span style="color:#79C0FF"> string</span><span style="color:#E6EDF3">;</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#8B949E">/**</span></span>
+<span class="line"><span style="color:#8B949E"> * Falling meteor streaks. Values are derived from the index (not random)</span></span>
+<span class="line"><span style="color:#8B949E"> * so server and client markup always match.</span></span>
+<span class="line"><span style="color:#8B949E"> */</span></span>
+<span class="line"><span style="color:#FF7B72">export</span><span style="color:#FF7B72"> function</span><span style="color:#D2A8FF"> Meteors</span><span style="color:#E6EDF3">({ </span><span style="color:#FFA657">number</span><span style="color:#FF7B72"> =</span><span style="color:#79C0FF"> 12</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">className</span><span style="color:#E6EDF3"> }</span><span style="color:#FF7B72">:</span><span style="color:#FFA657"> MeteorsProps</span><span style="color:#E6EDF3">) {</span></span>
+<span class="line"><span style="color:#FF7B72">  const</span><span style="color:#79C0FF"> meteors</span><span style="color:#FF7B72"> =</span><span style="color:#E6EDF3"> Array.</span><span style="color:#D2A8FF">from</span><span style="color:#E6EDF3">({ length: number }, (</span><span style="color:#FFA657">_</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">i</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> ({</span></span>
+<span class="line"><span style="color:#E6EDF3">    left: </span><span style="color:#A5D6FF">`${</span><span style="color:#A5D6FF">(</span><span style="color:#E6EDF3">i</span><span style="color:#FF7B72"> *</span><span style="color:#79C0FF"> 37</span><span style="color:#FF7B72"> +</span><span style="color:#79C0FF"> 11</span><span style="color:#A5D6FF">) </span><span style="color:#FF7B72">%</span><span style="color:#79C0FF"> 100</span><span style="color:#A5D6FF">}%`</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    top: </span><span style="color:#A5D6FF">`${</span><span style="color:#A5D6FF">(</span><span style="color:#E6EDF3">i</span><span style="color:#FF7B72"> *</span><span style="color:#79C0FF"> 17</span><span style="color:#A5D6FF">) </span><span style="color:#FF7B72">%</span><span style="color:#79C0FF"> 40</span><span style="color:#A5D6FF">}%`</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    delay: </span><span style="color:#A5D6FF">`${</span><span style="color:#A5D6FF">((</span><span style="color:#E6EDF3">i</span><span style="color:#FF7B72"> *</span><span style="color:#79C0FF"> 53</span><span style="color:#A5D6FF">) </span><span style="color:#FF7B72">%</span><span style="color:#79C0FF"> 70</span><span style="color:#A5D6FF">) </span><span style="color:#FF7B72">/</span><span style="color:#79C0FF"> 10</span><span style="color:#A5D6FF">}s`</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">    duration: </span><span style="color:#A5D6FF">`${</span><span style="color:#79C0FF">4</span><span style="color:#FF7B72"> +</span><span style="color:#A5D6FF"> ((</span><span style="color:#E6EDF3">i</span><span style="color:#FF7B72"> *</span><span style="color:#79C0FF"> 29</span><span style="color:#A5D6FF">) </span><span style="color:#FF7B72">%</span><span style="color:#79C0FF"> 35</span><span style="color:#A5D6FF">) </span><span style="color:#FF7B72">/</span><span style="color:#79C0FF"> 10</span><span style="color:#A5D6FF">}s`</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">  }));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF7B72">  return</span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;</span><span style="color:#7EE787">div</span></span>
+<span class="line"><span style="color:#79C0FF">      aria-hidden</span></span>
+<span class="line"><span style="color:#79C0FF">      data-slot</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"meteors"</span></span>
+<span class="line"><span style="color:#79C0FF">      className</span><span style="color:#FF7B72">=</span><span style="color:#A5D6FF">"pointer-events-none absolute inset-0 overflow-hidden"</span></span>
+<span class="line"><span style="color:#E6EDF3">    ></span></span>
+<span class="line"><span style="color:#FF7B72">      {</span><span style="color:#E6EDF3">meteors.</span><span style="color:#D2A8FF">map</span><span style="color:#E6EDF3">((</span><span style="color:#FFA657">meteor</span><span style="color:#E6EDF3">, </span><span style="color:#FFA657">i</span><span style="color:#E6EDF3">) </span><span style="color:#FF7B72">=></span><span style="color:#E6EDF3"> (</span></span>
+<span class="line"><span style="color:#E6EDF3">        &#x3C;</span><span style="color:#7EE787">span</span></span>
+<span class="line"><span style="color:#79C0FF">          key</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">i</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          className</span><span style="color:#FF7B72">={</span><span style="color:#D2A8FF">cn</span><span style="color:#E6EDF3">(</span></span>
+<span class="line"><span style="color:#A5D6FF">            "animate-meteor absolute size-0.5 rounded-full bg-foreground/70 shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#A5D6FF">            "before:absolute before:top-1/2 before:h-px before:w-[70px] before:-translate-y-1/2 before:bg-gradient-to-r before:from-foreground/60 before:to-transparent"</span><span style="color:#E6EDF3">,</span></span>
+<span class="line"><span style="color:#E6EDF3">            className</span></span>
+<span class="line"><span style="color:#E6EDF3">          )</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#79C0FF">          style</span><span style="color:#FF7B72">={</span><span style="color:#E6EDF3">{</span></span>
+<span class="line"><span style="color:#E6EDF3">            left: meteor.left,</span></span>
+<span class="line"><span style="color:#E6EDF3">            top: meteor.top,</span></span>
+<span class="line"><span style="color:#E6EDF3">            animationDelay: meteor.delay,</span></span>
+<span class="line"><span style="color:#E6EDF3">            animationDuration: meteor.duration,</span></span>
+<span class="line"><span style="color:#E6EDF3">          }</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">        /></span></span>
+<span class="line"><span style="color:#E6EDF3">      ))</span><span style="color:#FF7B72">}</span></span>
+<span class="line"><span style="color:#E6EDF3">    &#x3C;/</span><span style="color:#7EE787">div</span><span style="color:#E6EDF3">></span></span>
+<span class="line"><span style="color:#E6EDF3">  );</span></span>
+<span class="line"><span style="color:#E6EDF3">}</span></span>
+<span class="line"></span></code></pre>e:["$","div",null,{"className":"mt-3 overflow-x-auto rounded-xl border text-sm [&_pre]:max-h-[36rem] [&_pre]:overflow-auto [&_pre]:p-5","dangerouslySetInnerHTML":{"__html":"$15"}}]
+f:["$","script","script-0",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/1-gal4-upivj-.js","async":true}]
+10:["$","script","script-1",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/3wa4zpp7nets9.js","async":true}]
+11:["$","script","script-2",{"src":"/portfolio/solaris-velora-saas/_next/static/chunks/23q67xr0sz8ab.js","async":true}]
+12:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+18:null
