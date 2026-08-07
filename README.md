@@ -2,7 +2,7 @@
 
 One URL that links to all seven Solaris product demos. Drop this in Upwork proposals, LinkedIn messages, cold emails — anywhere a client wants proof of work in ten seconds.
 
-**Live:** https://shaisolaris.github.io/solaris-demos/
+**Live:** https://shaisolaris.github.io/portfolio/
 
 ## What's here
 

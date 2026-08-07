@@ -64,6 +64,8 @@
       <button class="fbtn px-2.5 py-1 text-xs rounded-full border border-white/20 text-white/70" data-f="enterprise">Enterprise</button>
       <button class="fbtn px-2.5 py-1 text-xs rounded-full border border-white/20 text-white/70" data-f="marketing">Marketing</button>
       <button class="fbtn px-2.5 py-1 text-xs rounded-full border border-white/20 text-white/70" data-f="lifestyle">Lifestyle</button>
+      <button class="fbtn px-2.5 py-1 text-xs rounded-full border border-white/20 text-white/70" data-f="immersive">3D &amp; Games</button>
+      <button class="fbtn px-2.5 py-1 text-xs rounded-full border border-white/20 text-white/70" data-f="content">Docs &amp; Content</button>
     </span></div>
     <div><span class="flabel mr-3">Stack</span><span class="inline-flex flex-wrap gap-1.5" id="fs">
       <button class="fbtn active px-2.5 py-1 text-xs rounded-full border border-white/20 text-white/70" data-f="all">All</button>
@@ -77,6 +79,7 @@
       <button class="fbtn px-2.5 py-1 text-xs rounded-full border border-white/20 text-white/70" data-f="shopify">Shopify</button>
       <button class="fbtn px-2.5 py-1 text-xs rounded-full border border-white/20 text-white/70" data-f="threejs">Three.js</button>
       <button class="fbtn px-2.5 py-1 text-xs rounded-full border border-white/20 text-white/70" data-f="vanilla">Vanilla JS</button>
+      <button class="fbtn px-2.5 py-1 text-xs rounded-full border border-white/20 text-white/70" data-f="astro">Astro</button>
     </span></div>
   </div>
   <main class="max-w-7xl mx-auto px-6 py-6">
@@ -116,6 +119,22 @@ const U={
 };
 
 const ALL=[
+  // Phase A additions — Solaris expansion 2026-08
+  {n:"Fluid Lab",u:"solaris-fluid-lab",h:"https://shaisolaris.github.io/portfolio/solaris-fluid-lab/",i:"immersive",s:"vanilla",t:["WebGL","GPU Fluid","Interactive"],th:"https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?w=640&h=360&fit=crop"},
+  {n:"HexVolt Racer",u:"solaris-hexvolt-racer",h:"https://shaisolaris.github.io/portfolio/solaris-hexvolt-racer/",i:"immersive",s:"threejs",t:["Three.js","HTML5 Game","Racing"],th:"https://images.unsplash.com/photo-1511512578047-dfb367046420?w=640&h=360&fit=crop"},
+  {n:"Apex Rally 3D",u:"solaris-apex-rally",h:"https://shaisolaris.github.io/portfolio/solaris-apex-rally/",i:"immersive",s:"react",t:["R3F","Physics","Game"],th:"https://images.unsplash.com/photo-1547643221-53d1f8a5aa46?w=640&h=360&fit=crop"},
+  {n:"Interactive 3D Folio",u:"solaris-drive-folio",h:"https://shaisolaris.github.io/portfolio/solaris-drive-folio/",i:"immersive",s:"threejs",t:["Three.js","3D World","Drivable"],th:"https://images.unsplash.com/photo-1626379953822-baec19c3accd?w=640&h=360&fit=crop"},
+  {n:"XR Lab",u:"solaris-xr-lab",h:"https://shaisolaris.github.io/portfolio/solaris-xr-lab/",i:"immersive",s:"vanilla",t:["WebXR","AR/VR","Hand Tracking"],th:"https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=640&h=360&fit=crop"},
+  {n:"AR Product Viewer",u:"solaris-ar-viewer",h:"https://shaisolaris.github.io/portfolio/solaris-ar-viewer/",i:"immersive",s:"vanilla",t:["model-viewer","AR","3D"],th:"https://images.unsplash.com/photo-1633355444132-695d5876cd00?w=640&h=360&fit=crop"},
+  {n:"Velora SaaS",u:"solaris-velora-saas",h:"https://shaisolaris.github.io/portfolio/solaris-velora-saas/",i:"marketing",s:"react",t:["Next.js 16","Animated","Bento"],th:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=640&h=360&fit=crop"},
+  {n:"Open Dev Landing",u:"solaris-open-landing",h:"https://shaisolaris.github.io/portfolio/solaris-open-landing/",i:"marketing",s:"react",t:["Next.js","Dark","Tailwind 4"],th:"https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=640&h=360&fit=crop"},
+  {n:"AstroWind Marketing",u:"solaris-astrowind",h:"https://shaisolaris.github.io/portfolio/solaris-astrowind/",i:"marketing",s:"astro",t:["Astro 5","Marketing","Fast"],th:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=640&h=360&fit=crop"},
+  {n:"Astro Blog",u:"solaris-astro-blog",h:"https://shaisolaris.github.io/portfolio/solaris-astro-blog/",i:"content",s:"astro",t:["Astro","Blog","SEO"],th:"https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=640&h=360&fit=crop"},
+  {n:"Launch Dev-Tool",u:"solaris-launch-devtool",h:"https://shaisolaris.github.io/portfolio/solaris-launch-devtool/",i:"content",s:"react",t:["Dev Tool","shadcn","Landing"],th:"https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=640&h=360&fit=crop"},
+  {n:"Magic Portfolio",u:"solaris-magic-folio",h:"https://shaisolaris.github.io/portfolio/solaris-magic-folio/",i:"marketing",s:"react",t:["shadcn","Portfolio","Motion"],th:"https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=640&h=360&fit=crop"},
+  {n:"Agency Kit",u:"solaris-agency-kit",h:"https://shaisolaris.github.io/portfolio/solaris-agency-kit/",i:"marketing",s:"react",t:["GSAP","Agency","Case Studies"],th:"https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=640&h=360&fit=crop"},
+  {n:"Ollie Block Theme",u:"solaris-ollie-wp",h:"https://github.com/Shaisolaris/portfolio/tree/main/solaris-ollie-wp",i:"content",s:"laravel",t:["WordPress","FSE","Patterns"],th:"https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=640&h=360&fit=crop"},
+  {n:"Horizon Theme",u:"solaris-horizon-shopify",h:"https://github.com/Shaisolaris/portfolio/tree/main/solaris-horizon-shopify",i:"ecommerce",s:"shopify",t:["Shopify","OS 2.0","Liquid"],th:"https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=640&h=360&fit=crop"},
   // Sites with their own images
   {n:"MAISON Store",u:"maison-store",i:"ecommerce",s:"react",t:["Next.js","Cart","8 Products"],th:B+"/maison-store/luxury-minimalist-fashion-model-in-elegant-dark-cl.jpg"},
   {n:"Velour Boutique",u:"velour-boutique",i:"ecommerce",s:"react",t:["Next.js","Skincare","Cart"],th:B+"/velour-boutique/images/hero-model.jpg"},
@@ -231,7 +250,7 @@ const ALL=[
 
 function card(d){
   const tags=d.t.map(t=>`<span class="tag">${t}</span>`).join("");
-  return`<a href="${B}/${d.u}/" target="_blank" class="card block bg-white/[0.03] border border-white/[0.08] rounded-lg overflow-hidden" data-i="${d.i}" data-s="${d.s}">
+  return`<a href="${d.h||`${B}/${d.u}/`}" target="_blank" class="card block bg-white/[0.03] border border-white/[0.08] rounded-lg overflow-hidden" data-i="${d.i}" data-s="${d.s}">
     <div class="thumb"><img src="${d.th}" alt="${d.n}" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=640&h=360&fit=crop'" /></div>
     <div class="p-4"><h3 class="text-sm font-semibold">${d.n}</h3><div class="flex flex-wrap gap-1.5 mt-2">${tags}</div></div>
   </a>`;

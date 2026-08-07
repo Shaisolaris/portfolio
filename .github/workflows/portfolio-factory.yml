@@ -1,0 +1,70 @@
+name: Portfolio Factory — Phase A
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["factory/**"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: factory
+  cancel-in-progress: false
+
+jobs:
+  factory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build all Phase A demos into subfolders
+        run: |
+          set +e
+          python3 - <<'PY' > items.txt
+          import json
+          for i in json.load(open('factory/manifest.json'))['phaseA_pages']:
+              if i.get('repo_only'): continue
+              print("|".join([i['slug'], i['name'], i['upstream'], i.get('build','none'), str(i.get('publish_dir','.')), str(i.get('static_export',False)), i.get('license','')]))
+          PY
+          while IFS="|" read -r SLUG NAME UPSTREAM BUILD PUB EXPORT LICENSE; do
+            echo "::group::$SLUG"
+            rm -rf /tmp/work && git clone --depth 1 "$UPSTREAM" /tmp/work && rm -rf /tmp/work/.git /tmp/work/.github
+            bash factory/rebrand.sh /tmp/work "$NAME" "$SLUG" "$UPSTREAM" "$LICENSE"
+            pushd /tmp/work >/dev/null
+            OK=1
+            case "$BUILD" in
+              none) : ;;
+              custom:modelviewer_demo)
+                if [ -d packages/modelviewer.dev ]; then PUB="packages/modelviewer.dev"; else OK=0; fi ;;
+              *)
+                if [ "$EXPORT" = "True" ]; then SLUG="$SLUG" node "$GITHUB_WORKSPACE/factory_patch_next.js" || true; fi
+                sed -i "s#base: *'/'#base: '/portfolio/$SLUG/'#" vite.config.* 2>/dev/null || true
+                eval "$BUILD" || OK=0 ;;
+            esac
+            popd >/dev/null
+            if [ "$OK" = "1" ]; then
+              SRC="/tmp/work/$PUB"; [ "$PUB" = "." ] && SRC="/tmp/work"
+              if [ -d "$SRC" ]; then
+                rm -rf "$SLUG" && mkdir -p "$SLUG" && cp -r "$SRC"/. "$SLUG"/ && echo "OK $SLUG" >> factory/build-report.txt
+              else
+                echo "FAIL(no-out) $SLUG" >> factory/build-report.txt
+              fi
+            else
+              echo "FAIL(build) $SLUG" >> factory/build-report.txt
+            fi
+            echo "::endgroup::"
+          done < items.txt
+
+      - name: Commit built demos
+        run: |
+          git config user.name "solaris-factory"
+          git config user.email "shehryartali@gmail.com"
+          git add -A
+          git commit -m "factory: build Phase A demos into /<slug>/ subfolders" || echo "nothing to commit"
+          git push
+          echo "== Build report =="; cat factory/build-report.txt || true
