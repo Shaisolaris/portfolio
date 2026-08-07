@@ -35,7 +35,6 @@ node_modules/
 
 # Claude #
 ############
-.claude/
 
 # Formatting script
 format-templates.mjs
