@@ -13,7 +13,7 @@
 9:["$","div",null,{"aria-hidden":true,"className":"pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-card/60 to-transparent"}]
 a:["$","div",null,{"className":"pointer-events-none relative z-10 flex flex-col gap-1 p-6 transition-transform duration-300 ease-out motion-reduce:transition-none","children":["$undefined",["$","h3",null,{"className":"text-lg font-semibold text-card-foreground","children":"Meteors"}],["$","p",null,{"className":"text-sm text-muted-foreground","children":"Streaks of light."}]]}]
 b:["$","h2",null,{"className":"mt-12 text-lg font-semibold","children":"Installation"}]
-c:["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://velora.colorlib.com/r/bento-grid.json"}],["$","$L14",null,{"text":"npx shadcn@latest add https://velora.colorlib.com/r/bento-grid.json","className":"border-white/15 bg-white/5"}]]}]
+c:["$","div",null,{"className":"mt-3 flex items-center justify-between gap-3 rounded-xl border bg-neutral-950 px-4 py-3 font-mono text-sm text-neutral-200","children":[["$","code",null,{"className":"truncate","children":"npx shadcn@latest add https://shaisolaris.github.io/portfolio/solaris-velora-saas/r/bento-grid.json"}],["$","$L14",null,{"text":"npx shadcn@latest add https://shaisolaris.github.io/portfolio/solaris-velora-saas/r/bento-grid.json","className":"border-white/15 bg-white/5"}]]}]
 d:["$","p",null,{"className":"mt-3 text-sm text-muted-foreground","children":["Installs with: ","lucide-react"]}]
 15:Ta48,import { ArrowRightIcon } from "lucide-react";
 

@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://velora.colorlib.com/sitemap.xml
+Sitemap: https://shaisolaris.github.io/portfolio/solaris-velora-saas/sitemap.xml
